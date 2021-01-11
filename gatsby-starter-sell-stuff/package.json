@@ -1,0 +1,41 @@
+{
+  "name": "gatsby-starter-sell-stuff",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Rich Haines",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "pretty-check": "prettier --check \"src/**/*.{js}\"",
+    "pretty": "prettier --write \"src/**/*js\"",
+    "sitemap": "gatsby build && gatsby serve",
+    "z": "gatsby clean && gatsby develop"
+  },
+  "dependencies": {
+    "@fontsource/abel": "^4.1.0",
+    "@fontsource/bodoni-moda": "^4.1.1",
+    "@sanity/client": "^2.1.4",
+    "@stripe/stripe-js": "^1.11.0",
+    "gatsby": "^2.30.1",
+    "gatsby-plugin-brotli": "^2.0.0",
+    "gatsby-plugin-manifest": "^2.10.0",
+    "gatsby-plugin-minify": "^0.3.0",
+    "gatsby-plugin-react-helmet": "^3.8.0",
+    "gatsby-plugin-sitemap": "^2.10.0",
+    "gatsby-plugin-theme-ui": "^0.3.5",
+    "gatsby-source-filesystem": "^2.9.0",
+    "gatsby-source-stripe": "^3.2.1",
+    "gsap": "^3.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-seo-component": "^2.0.2",
+    "theme-ui": "^0.3.5",
+    "use-shopping-cart": "^2.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}

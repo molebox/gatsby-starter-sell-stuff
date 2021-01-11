@@ -1,0 +1,60 @@
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development" || "production"
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
+module.exports = {
+    siteMetadata: {
+        siteUrl: 'https://gatsby-starter-sell-stuff.netlify.app',
+        title: 'Gatsby Starter Sell Stuff',
+        currency: 'USD',
+        allowedCountries: ['US', 'GB', 'CA']
+      },
+    plugins: [
+        {
+            resolve: `gatsby-source-stripe`,
+            options: {
+              objects: ['Product', 'Sku', 'Price'],
+              secretKey: process.env.STRIPE_API_SECRET,
+              downloadFiles: true,
+            }
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+              name: 'pages',
+              path: `${__dirname}/src/pages/`
+            }
+          },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+              path: `${__dirname}/src/assets/`,
+              name: 'assets'
+            },
+        },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+              name: `gatsby-starter-sell-stuff`,
+              short_name: `gatsby-starter-sell-stuff`,
+              start_url: `/`,
+              background_color: `#ffffff`,
+              theme_color: `#ffffff`,
+              display: `standalone`,
+              icon: `./src/assets/favicon.png`
+            },
+          },
+          'gatsby-plugin-sitemap',
+          {
+            resolve: 'gatsby-plugin-brotli',
+            options: {
+              extensions: ['css', 'html', 'js', 'svg']
+            }
+          },
+          'gatsby-plugin-minify',
+          'gatsby-plugin-theme-ui'
+    ]
+}

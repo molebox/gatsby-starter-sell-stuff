@@ -10,16 +10,16 @@ module.exports = {
         siteUrl: 'https://gatsby-starter-sell-stuff.netlify.app',
         title: 'Gatsby Starter Sell Stuff',
         currency: 'USD',
-        allowedCountries: ['US', 'GB', 'CA']
+        allowedCountries: ['US', 'GB', 'CA'],
+        owner: 'Rich Haines'
       },
     plugins: [
         {
-            resolve: `gatsby-source-stripe`,
-            options: {
-              objects: ['Product', 'Sku', 'Price'],
-              secretKey: process.env.STRIPE_API_SECRET,
-              downloadFiles: true,
-            }
+          resolve: `gatsby-source-sanity`,
+          options: {
+            projectId: process.env.SANITY_PROJECT_ID,
+            dataset: process.env.SANITY_DATASET,
+          },
         },
         {
             resolve: 'gatsby-source-filesystem',

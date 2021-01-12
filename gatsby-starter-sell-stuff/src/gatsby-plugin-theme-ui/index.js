@@ -1,12 +1,3 @@
-const desktopAreas = `
-'cats   main    cats'
-`;
-
-const mobileAreas = `
-'cats'
-'main'
-`;
-
 export default {
   breakpoints: ["40em", "52em", "64em"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -46,19 +37,9 @@ export default {
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
-      transform: [null, "rotate(270deg)", "rotate(270deg)"],
-      alignSelf: "center",
-      justifySelf: "center",
+      mt: 0.5,
+      // transform: [null, "rotate(270deg)", "rotate(270deg)"],
     },
-  },
-  layout: {
-    // root: {
-    //   display: 'grid',
-    //   gridTemplateColumns: ['1fr', null, '60px 1fr 100px'],
-    //   gridTemplateAreas: [mobileAreas, null, desktopAreas],
-    //   minHeight: '100vh',
-    //   position: 'relative'
-    // }
   },
   sizes: {
     sidebar: [80, "100%", "100%"],
@@ -97,12 +78,28 @@ export default {
       variant: "text.body",
       fontSize: 4,
     },
+    footer: {
+      gridArea: "footer",
+      fontSize: 1,
+      alignSelf: "end",
+    },
   },
-  grids: {
-    main: {
-      gap: 0,
-      height: "100vh",
-      position: "relative",
+  header: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    height: [200, 100],
+    gridArea: "nav",
+  },
+  navLink: {
+    fontSize: 3,
+    p: 2,
+    color: "inherit",
+    ":active": {
+      color: "primary",
+    },
+    ":hover": {
+      cursor: "crosshair",
     },
   },
 };

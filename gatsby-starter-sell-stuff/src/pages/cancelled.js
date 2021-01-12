@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Cancelled = () => {
-
-    return (
-        <div>
-            <h1>oh no!</h1>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>oh no!</h1>
+    </div>
+  );
+};
 
 export default Cancelled;

@@ -10,6 +10,7 @@ export const useSiteMetadata = () => {
             siteUrl
             currency
             allowedCountries
+            owner
           }
         }
       }

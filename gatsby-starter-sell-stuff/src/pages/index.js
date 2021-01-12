@@ -3,10 +3,8 @@ import { Box, Heading, Text } from "theme-ui";
 import Categories from "../components/general/categories";
 import Layout from "../components/general/layout";
 import Main from "../components/general/main";
-import { useSiteMetadata } from "../components/useSiteMetadata";
 
 export default () => {
-  const { title } = useSiteMetadata();
   return (
     <Layout>
       <Categories />
@@ -16,7 +14,7 @@ export default () => {
             textAlign: "center",
           }}
         >
-          <Heading as="h1" variant="styles.h1">
+          {/* <Heading as="h1" variant="styles.h1">
             {title}
           </Heading>
           <Heading as="h2" variant="styles.h2">
@@ -24,7 +22,7 @@ export default () => {
           </Heading>
           <Text as="p" variant="styles.p">
             This is a paragraph
-          </Text>
+          </Text> */}
         </Box>
       </Main>
     </Layout>

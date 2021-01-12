@@ -1,17 +1,39 @@
 import React from "react";
-import { Flex } from "theme-ui";
+import { Box } from "theme-ui";
+import Footer from "./footer";
+import Header from "./header";
 
 const Layout = ({ children }) => {
   return (
-    <Flex
+    <Box
       sx={{
-        flexWrap: "wrap",
-        height: "100vh",
-        // minHeight: '100vh'
+        p: 2,
+        width: "100%",
+        gap: 0,
+        display: "grid",
+        gridTemplateAreas: [
+          `
+       'nav'
+       'main'
+       'footer'
+       `,
+          `
+       'nav   nav   nav   nav'
+       'main  main  main  main'
+       'footer  footer  footer footer'
+       `,
+        ],
+        gridTemplateColumns: ["auto", "repeat(4, 1fr)"],
+        gridTemplateRows: "minmax(auto, 300px) 1fr minmax(auto, 50px)",
+        height: "100%",
+        minHeight: "100vh",
+        position: "relative",
       }}
     >
+      <Header />
       {children}
-    </Flex>
+      <Footer />
+    </Box>
   );
 };
 

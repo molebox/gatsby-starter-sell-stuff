@@ -7,11 +7,7 @@ const Main = ({ children }) => {
       as="main"
       p={3}
       sx={{
-        flexGrow: 99999,
-        flexBasis: 0,
-        minWidth: 320,
-        marginLeft: [null, 80],
-        marginTop: [80, null],
+        gridArea: "main",
       }}
     >
       {children}

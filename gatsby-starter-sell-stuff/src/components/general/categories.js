@@ -1,79 +1,59 @@
-import React, { useState } from "react";
-import { Flex, Text, Box } from "theme-ui";
+import React, { useContext } from "react";
+import { Flex, Text, Close, Grid } from "theme-ui";
 import { graphql, useStaticQuery } from "gatsby";
+import { StateContext, DispatchContext } from "./../context";
 
 const Categories = () => {
-  const [open, setOpen] = useState(false);
   const data = useStaticQuery(query);
-  // const categories = [...new Set(data.allStripePrice.nodes)];
-  const categories = data.allStripePrice.nodes;
-  console.log({ categories });
-  const openSidebar = () => setOpen(!open);
-
-  const uniqueCategories = categories.reduce((unique, item) => {
-    console.log({ item });
-    console.log({ unique });
-    return unique.includes(item.product.metadata.Category)
-      ? unique
-      : [...unique, item];
-  }, []);
-  console.log({ uniqueCategories });
+  const state = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+  const categories = data.allSanityCategory.nodes;
 
   return (
     <Flex
       as="aside"
       sx={{
-        transition: ["height 250ms ease-in-out", "left 250ms ease-in-out"],
-        position: ["fixed"],
-        top: [0],
-        left: [null, open ? 0 : -420],
+        transition: "right 250ms ease-in-out",
+        position: "fixed",
+        bottom: 0,
+        right: state.navOpen ? 0 : -500,
         width: ["100%", 500],
-        height: [open ? 200 : 80, "100%"],
+        height: "calc(100vh - 100px)",
         padding: 1,
-        borderRight: [null, "solid 1px"],
         flexGrow: 1,
         flexBasis: "sidebar",
         flexDirection: "column",
         alignItems: "center",
-        // justifyContent: 'center',
-        // alignItems: ['center', 'flex-end'],
         background: "#ffffff",
       }}
-      // sx={{
-      //     flexGrow: 1,
-      //     flexBasis: 'sidebar',
-      //     flexDirection: 'column',
-      //     justifyContent: 'center',
-      //     alignItems: 'center',
-      //     borderRight: [null, 'solid 1px']
-      // }}
     >
-      <Flex
-        onClick={openSidebar}
-        sx={{
-          marginRight: -20,
-          height: "100%",
-          ":hover": {
-            cursor: "crosshair",
-          },
-        }}
-      >
+      <Flex>
+        <Close
+          sx={{
+            position: "absolute",
+            top: 1,
+            left: 1,
+            ":hover": {
+              cursor: "crosshair",
+            },
+          }}
+          onClick={() => dispatch({ type: "navOpen", payload: false })}
+        />
         <Text as="h2" variant="cats">
           Categories
         </Text>
       </Flex>
-      <Flex
-        sx={{
-          visibility: open ? "visible" : "hidden",
-          flexDirection: "column",
-        }}
+      <Grid
+        columns="repeat(auto-fill, minmax(auto, 100px))"
+        mt={5}
+        visibility={state.navOpen ? "visible" : "hidden"}
       >
-        {categories.map(({ product }, index) => (
+        {categories.map(({ title }, index) => (
           <Text as="p" variant="styles.p" key={index}>
-            {product.metadata.Category}
+            {title}
           </Text>
         ))}
-      </Flex>
+      </Grid>
     </Flex>
   );
 };
@@ -82,12 +62,11 @@ export default Categories;
 
 export const query = graphql`
   query GetCategories {
-    allStripePrice {
+    allSanityCategory {
       nodes {
-        product {
-          metadata {
-            Category
-          }
+        title
+        slug {
+          current
         }
       }
     }

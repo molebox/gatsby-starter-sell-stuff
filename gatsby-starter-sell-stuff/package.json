@@ -14,6 +14,7 @@
     "z": "gatsby clean && gatsby develop"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.6",
     "@fontsource/abel": "^4.1.0",
     "@fontsource/bodoni-moda": "^4.1.1",
     "@sanity/client": "^2.1.4",
@@ -26,8 +27,9 @@
     "gatsby-plugin-sitemap": "^2.10.0",
     "gatsby-plugin-theme-ui": "^0.3.5",
     "gatsby-source-filesystem": "^2.9.0",
-    "gatsby-source-stripe": "^3.2.1",
+    "gatsby-source-sanity": "^6.0.4",
     "gsap": "^3.5.1",
+    "isomorphic-fetch": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",

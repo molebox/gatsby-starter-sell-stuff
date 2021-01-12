@@ -1,13 +1,27 @@
-import React, { useContext } from "react";
-import { Flex, Text, Close, Grid } from "theme-ui";
-import { graphql, useStaticQuery } from "gatsby";
+import React, { useContext, useEffect } from "react";
+import { Flex, Text, Close, Grid, Spinner } from "theme-ui";
 import { StateContext, DispatchContext } from "./../context";
+import { gql, useLazyQuery } from "@apollo/client";
 
 const Categories = () => {
-  const data = useStaticQuery(query);
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
-  const categories = data.allSanityCategory.nodes;
+
+  const [loadCategories, { loading, error, data }] = useLazyQuery(
+    GET_CATEGORIES,
+    {
+      variables: {
+        title: state.selectedParentCategory,
+        // title: "Woman"
+      },
+    }
+  );
+
+  useEffect(() => {
+    if (state.selectedParentCategory !== "") {
+      loadCategories();
+    }
+  }, [state.selectedParentCategory]);
 
   return (
     <Flex
@@ -43,26 +57,38 @@ const Categories = () => {
           Categories
         </Text>
       </Flex>
-      <Grid
-        columns="repeat(auto-fill, minmax(auto, 100px))"
-        mt={5}
-        visibility={state.navOpen ? "visible" : "hidden"}
-      >
-        {categories.map(({ title }, index) => (
-          <Text as="p" variant="styles.p" key={index}>
-            {title}
-          </Text>
-        ))}
-      </Grid>
+      {loading ? (
+        <Spinner />
+      ) : error ? (
+        <Text as="p" sx={{ my: 5 }} variant="styles.p">
+          {error.message}
+        </Text>
+      ) : (
+        data && (
+          <Grid
+            columns="repeat(auto-fill, minmax(auto, 100px))"
+            mt={5}
+            visibility={state.navOpen ? "visible" : "hidden"}
+          >
+            {data.allSanityCategory.nodes.map(({ title }, index) => (
+              <Text as="p" variant="styles.p" key={index}>
+                {title}
+              </Text>
+            ))}
+          </Grid>
+        )
+      )}
     </Flex>
   );
 };
 
 export default Categories;
 
-export const query = graphql`
-  query GetCategories {
-    allSanityCategory {
+const GET_CATEGORIES = gql`
+  query GetCategoryChildren($title: String!) {
+    allSanityCategory(
+      filter: { parents: { elemMatch: { title: { eq: $title } } } }
+    ) {
       nodes {
         title
         slug {

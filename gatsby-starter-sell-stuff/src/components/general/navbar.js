@@ -7,6 +7,12 @@ import { useSiteMetadata } from "./../useSiteMetadata";
 const Navbar = ({ uniqueParents }) => {
   const { title } = useSiteMetadata();
   const dispatch = useContext(DispatchContext);
+
+  const selectedCategory = ({ cat }) => {
+    dispatch({ type: "navOpen", payload: true });
+    dispatch({ type: "selectedParentCategory", payload: cat });
+  };
+
   return (
     <Box
       as="nav"
@@ -44,7 +50,7 @@ const Navbar = ({ uniqueParents }) => {
             // to={parentCategory.slug.current}
             activeClassName="active"
             variant="navLink"
-            onClick={() => dispatch({ type: "navOpen", payload: true })}
+            onClick={() => selectedCategory(parentCategory.title)}
           >
             {parentCategory.title}
           </Link>

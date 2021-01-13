@@ -34,7 +34,7 @@ const Category = ({ data }) => {
             m: "0 auto",
             justifyContent: "center",
             alignItems: "center",
-            border: "solid 1px",
+            gap: 3,
             flexDirection: "column",
           }}
         >
@@ -42,6 +42,7 @@ const Category = ({ data }) => {
             <Flex
               sx={{
                 justifyContent: "space-between",
+                border: "solid 1px",
               }}
             >
               <Image src={product.images[0].asset.fluid.src} />

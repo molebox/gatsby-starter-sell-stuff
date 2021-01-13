@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Flex, Text, Close, Grid, Spinner, Link } from "theme-ui";
 import { StateContext, DispatchContext } from "../context";
 import { gql, useLazyQuery } from "@apollo/client";
 import { Link as GatsbyLink } from "gatsby";
+import { globalHistory } from "@reach/router";
 
 const Categories = () => {
   const state = useContext(StateContext);
@@ -20,6 +21,19 @@ const Categories = () => {
   useEffect(() => {
     loadCategories();
   }, [state.selectedParentCategory, loadCategories]);
+
+  useEffect(() => {
+    // If the route has changed it means the user has clicked on a category and we want to wait half a second then close the pop out
+    return globalHistory.listen(({ action }) => {
+      if (action === "PUSH") {
+        const timer = setTimeout(() => {
+          dispatch({ type: "navOpen", payload: false });
+        }, 500);
+
+        return () => clearTimeout(timer);
+      }
+    });
+  }, [state.navOpen]);
 
   const subCategories =
     data &&
@@ -86,7 +100,6 @@ const Categories = () => {
                 to={`/category/${slug.current}`}
                 activeClassName="active"
                 variant="navLink"
-                onClick={() => dispatch({ type: "navOpen", payload: false })}
               >
                 {title}
               </Link>

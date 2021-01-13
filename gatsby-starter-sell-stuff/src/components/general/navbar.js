@@ -8,7 +8,8 @@ const Navbar = ({ uniqueParents }) => {
   const { title } = useSiteMetadata();
   const dispatch = useContext(DispatchContext);
 
-  const selectedCategory = ({ cat }) => {
+  const selectedCategory = (cat) => {
+    console.log({ cat });
     dispatch({ type: "navOpen", payload: true });
     dispatch({ type: "selectedParentCategory", payload: cat });
   };

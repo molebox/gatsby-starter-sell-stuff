@@ -23,8 +23,9 @@ export default {
       type: 'text'
     },
     {
-      name: 'parents',
-      title: 'Parent categories',
+      name: 'subCategories',
+      title: 'Sub-Categories',
+      description: 'If this is a parent category it should have sub categories. If this category is named Men then it might have the following sub-categories: t-shirts, jeans, shoes',
       type: 'array',
       of: [
         {
@@ -43,6 +44,15 @@ export default {
           to: [{type: 'product'}]
         }
       ]
+    },
+    {
+      name: 'isParentCategory',
+      title: 'Is Parent Category',
+      description: 'Is this category a parent to other categories? if its top level and has no sub-categories then it is a parent.',
+      type: 'boolean'
     }
-  ]
+  ],
+  initialValue: {
+    isParentCategory: false
+  }
 }

@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
        `,
         ],
         gridTemplateColumns: ["auto", "repeat(4, 1fr)"],
-        gridTemplateRows: "minmax(auto, 300px) 1fr minmax(auto, 50px)",
+        gridTemplateRows: "minmax(auto, 100px) 1fr minmax(auto, 50px)",
         height: "100%",
         minHeight: "100vh",
         position: "relative",

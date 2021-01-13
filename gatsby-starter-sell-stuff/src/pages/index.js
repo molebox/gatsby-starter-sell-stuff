@@ -14,15 +14,9 @@ export default () => {
             textAlign: "center",
           }}
         >
-          {/* <Heading as="h1" variant="styles.h1">
-            {title}
+          <Heading as="h1" variant="styles.h1">
+            Home page yo!
           </Heading>
-          <Heading as="h2" variant="styles.h2">
-            This is a secondary heading
-          </Heading>
-          <Text as="p" variant="styles.p">
-            This is a paragraph
-          </Text> */}
         </Box>
       </Main>
     </Layout>

@@ -102,4 +102,10 @@ export default {
       cursor: "crosshair",
     },
   },
+  images: {
+    mainProduct: {
+      width: 100,
+      height: "auto",
+    },
+  },
 };

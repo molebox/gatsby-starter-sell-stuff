@@ -55,6 +55,8 @@ module.exports = {
             }
           },
           'gatsby-plugin-minify',
+          `gatsby-transformer-sharp`, 
+          `gatsby-plugin-sharp`,
           'gatsby-plugin-theme-ui'
     ]
 }

@@ -6,22 +6,22 @@ import Navbar from "./navbar";
 const Header = () => {
   const data = useStaticQuery(query);
 
-  const parents = data.allSanityCategory.nodes
+  const parentCategories = data.allSanityCategory.nodes
     .reduce((parents, node) => {
-      if (node.parents.length) {
-        parents.push(node.parents);
+      if (node.isParentCategory) {
+        parents.push(node);
       }
       return parents;
     }, [])
     .flat(2);
 
-  const uniqueParents = Array.from(
-    new Set(parents.map((parent) => parent.title))
-  ).map((title) => parents.find((parent) => parent.title === title));
+  // const uniqueSubCategories = Array.from(
+  //   new Set(subCategories.map((parent) => parent.title))
+  // ).map((title) => subCategories.find((parent) => parent.title === title));
 
   return (
     <Box as="header" variant="header">
-      <Navbar uniqueParents={uniqueParents} />
+      <Navbar uniqueParents={parentCategories} />
     </Box>
   );
 };
@@ -29,15 +29,20 @@ const Header = () => {
 export default Header;
 
 export const query = graphql`
-  query CategoriesQuery {
+  query GetCategories {
     allSanityCategory {
       nodes {
-        parents {
+        title
+        slug {
+          current
+        }
+        subCategories {
           title
           slug {
             current
           }
         }
+        isParentCategory
       }
     }
   }

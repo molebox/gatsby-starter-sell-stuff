@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { Flex, Text, Close, Grid, Spinner } from "theme-ui";
-import { StateContext, DispatchContext } from "./../context";
+import { Flex, Text, Close, Grid, Spinner, Link } from "theme-ui";
+import { StateContext, DispatchContext } from "../context";
 import { gql, useLazyQuery } from "@apollo/client";
+import { Link as GatsbyLink } from "gatsby";
 
 const Categories = () => {
   const state = useContext(StateContext);
@@ -12,16 +13,24 @@ const Categories = () => {
     {
       variables: {
         title: state.selectedParentCategory,
-        // title: "Woman"
       },
     }
   );
 
   useEffect(() => {
-    if (state.selectedParentCategory !== "") {
-      loadCategories();
-    }
-  }, [state.selectedParentCategory]);
+    loadCategories();
+  }, [state.selectedParentCategory, loadCategories]);
+
+  const subCategories =
+    data &&
+    data.allCategory
+      .reduce((subCategories, node) => {
+        if (node.subCategories.length) {
+          subCategories.push(node.subCategories);
+        }
+        return subCategories;
+      }, [])
+      .flat(2);
 
   return (
     <Flex
@@ -70,10 +79,17 @@ const Categories = () => {
             mt={5}
             visibility={state.navOpen ? "visible" : "hidden"}
           >
-            {data.allSanityCategory.nodes.map(({ title }, index) => (
-              <Text as="p" variant="styles.p" key={index}>
+            {subCategories.map(({ title, slug }, index) => (
+              <Link
+                as={GatsbyLink}
+                key={index}
+                to={`/category/${slug.current}`}
+                activeClassName="active"
+                variant="navLink"
+                onClick={() => dispatch({ type: "navOpen", payload: false })}
+              >
                 {title}
-              </Text>
+              </Link>
             ))}
           </Grid>
         )
@@ -84,12 +100,27 @@ const Categories = () => {
 
 export default Categories;
 
+// export const query = graphql`
+// query GetParentCategories {
+//   allSanityCategory(filter: {isParent: {eq: true}}) {
+//     nodes {
+//       title
+//       slug {
+//         current
+//       }
+//     }
+//   }
+// }
+// `;
+
 const GET_CATEGORIES = gql`
-  query GetCategoryChildren($title: String!) {
-    allSanityCategory(
-      filter: { parents: { elemMatch: { title: { eq: $title } } } }
-    ) {
-      nodes {
+  query GetCategories($title: String!) {
+    allCategory(where: { title: { eq: $title } }) {
+      title
+      slug {
+        current
+      }
+      subCategories {
         title
         slug {
           current
@@ -98,3 +129,18 @@ const GET_CATEGORIES = gql`
     }
   }
 `;
+
+// export const query = graphql`
+//   query GetCategoryChildren($title: String!) {
+//     allSanityCategory(
+//       filter: { parents: { elemMatch: { title: { eq: $title } } } }
+//     ) {
+//       nodes {
+//         title
+//         slug {
+//           current
+//         }
+//       }
+//     }
+//   }
+// `;

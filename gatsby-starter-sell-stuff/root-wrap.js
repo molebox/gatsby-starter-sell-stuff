@@ -12,7 +12,7 @@ import {
 import fetch from 'isomorphic-fetch';
 
 const httpLink = createHttpLink({
-    uri: `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.SANITY_DATASET}/default`,
+    uri: `https://${process.env.GATSBY_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.GATSBY_SANITY_DATASET}/default`,
     fetch,
   });
 
@@ -22,7 +22,7 @@ const httpLink = createHttpLink({
     fetch,
   });
 
-const stripePromise = loadStripe(process.env.STRIPE_API_PUBLIC);
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_API_PUBLIC);
 
 const WithMetaData = ({element}) => {
     const {currency, allowedCountries} = useSiteMetadata();

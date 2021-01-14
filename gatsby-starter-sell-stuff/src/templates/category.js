@@ -33,7 +33,10 @@ const Category = ({ data }) => {
                 border: "solid 1px",
               }}
             >
-              <Image variant="mainProduct" src={product.images[0].asset.fluid.src} />
+              <Image
+                variant="mainProduct"
+                src={product.images[0].asset.fluid.src}
+              />
               {/* <Img fluid={product.images[0].asset.fluid} /> */}
               <Flex
                 sx={{

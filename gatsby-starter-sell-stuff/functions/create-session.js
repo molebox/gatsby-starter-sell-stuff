@@ -1,9 +1,9 @@
-const stripe = require('stripe')(process.env.GATSBY_STRIPE_API_SECRET);
+const stripe = require('stripe')(process.env.STRIPE_API_SECRET);
 const validateCartItems = require('use-shopping-cart/src/serverUtil').validateCartItems;
 const sanityClient = require('@sanity/client');
 const client = sanityClient({
-    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
-    dataset: process.env.GATSBY_SANITY_DATASET,
+    projectId: process.env.SANITY_PROJECT_ID,
+    dataset: process.env.SANITY_DATASET,
     useCdn: true // `false` if you want to ensure fresh data
 });
 const sanityQuery = '*[_type == "product"]'

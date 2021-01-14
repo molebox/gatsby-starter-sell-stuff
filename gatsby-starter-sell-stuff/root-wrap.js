@@ -11,13 +11,6 @@ import {
 } from '@apollo/client';
 import fetch from 'isomorphic-fetch';
 
-let activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development" || "production"
-
-require("dotenv").config({
-  path: `.env.${activeEnv}`,
-})
-
 const httpLink = createHttpLink({
     uri: `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.SANITY_DATASET}/default`,
     fetch,

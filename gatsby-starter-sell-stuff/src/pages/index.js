@@ -7,15 +7,15 @@ import Main from "../components/general/main";
 export default () => {
   return (
     <Layout>
-        <Box
-          sx={{
-            textAlign: "center",
-          }}
-        >
-          <Heading as="h1" variant="styles.h1">
-            Home page yo!
-          </Heading>
-        </Box>
+      <Box
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        <Heading as="h1" variant="styles.h1">
+          Home page yo!
+        </Heading>
+      </Box>
     </Layout>
   );
 };

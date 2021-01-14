@@ -7,6 +7,7 @@ export const DispatchContext = React.createContext(null);
 
 const initialValues = {
   navOpen: false,
+  cartOpen: false,
   selectedParentCategory: "",
 };
 

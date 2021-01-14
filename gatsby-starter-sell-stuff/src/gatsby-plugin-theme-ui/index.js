@@ -16,11 +16,12 @@ export default {
     heading: 1.125,
   },
   colors: {
-    text: "#111111",
-    background: "#ffffff",
+    text: "#212529",
+    background: "#f8f9fa",
     primary: "#DE3C4B",
-    secondary: "#E7E7E9",
-    muted: "#545455",
+    secondary: "#ced4da",
+    muted: "#495057",
+    subtle: "#e9ecef",
   },
   text: {
     heading: {
@@ -34,10 +35,10 @@ export default {
       fontWeight: "body",
     },
     cats: {
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
-      mt: 0.5,
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
+      fontSize: 5,
       // transform: [null, "rotate(270deg)", "rotate(270deg)"],
     },
   },
@@ -83,6 +84,9 @@ export default {
       fontSize: 1,
       alignSelf: "end",
     },
+    spinner: {
+      color: "text",
+    },
   },
   header: {
     display: "flex",
@@ -92,6 +96,7 @@ export default {
     gridArea: "nav",
   },
   navLink: {
+    textDecoration: "none",
     fontSize: 3,
     p: 2,
     color: "inherit",
@@ -102,10 +107,71 @@ export default {
       cursor: "crosshair",
     },
   },
+  linkEffect: {
+    textDecoration: "none",
+    fontSize: 3,
+    p: 2,
+    color: "inherit",
+    ":active": {
+      color: "primary",
+    },
+    ":hover": {
+      cursor: "crosshair",
+      ":after": {
+        width: "20%",
+        position: "absolute",
+      },
+    },
+    ":after": {
+      content: "''",
+      display: "block",
+      width: "15%",
+      paddingTop: 1,
+      borderBottom: "2px solid #212529",
+      transition: "0.5s",
+      position: "absolute",
+      zIndex: 10,
+    },
+  },
   images: {
     mainProduct: {
       width: 150,
       height: "auto",
+    },
+  },
+  grids: {
+    layout: {
+      p: 2,
+      width: "100%",
+      gap: 0,
+      gridTemplateAreas: [
+        `
+     'nav'
+     'main'
+     'footer'
+     `,
+        `
+     'nav   nav   nav   nav'
+     'main  main  main  main'
+     'footer  footer  footer footer'
+     `,
+      ],
+      gridTemplateColumns: ["auto", "repeat(4, 1fr)"],
+      gridTemplateRows: "minmax(auto, 100px) 1fr minmax(auto, 50px)",
+      height: "100%",
+      minHeight: "100vh",
+      position: "relative",
+    },
+    navbar: {
+      gridTemplateColumns: [
+        "auto",
+        "minmax(auto, 600px) auto minmax(auto, 500px)",
+      ],
+      gridAutoRows: "1fr",
+      width: "100%",
+      alignItems: "center",
+      position: "relative",
+      zIndex: 100,
     },
   },
 };

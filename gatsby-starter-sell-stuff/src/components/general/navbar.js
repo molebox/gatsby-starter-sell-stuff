@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Flex, Link } from "theme-ui";
+import { Box, Flex, Link, Grid, Text } from "theme-ui";
 import { Link as GatsbyLink } from "gatsby";
 import { DispatchContext } from "../context";
 import { useSiteMetadata } from "./../useSiteMetadata";
@@ -9,32 +9,19 @@ const Navbar = ({ uniqueParents }) => {
   const dispatch = useContext(DispatchContext);
 
   const selectedCategory = (cat) => {
-    console.log({ cat });
     dispatch({ type: "navOpen", payload: true });
     dispatch({ type: "selectedParentCategory", payload: cat });
   };
 
   return (
-    <Box
-      as="nav"
-      sx={{
-        display: "grid",
-        gridTemplateColumns: [
-          "auto",
-          "minmax(auto, 500px) auto minmax(auto, 500px)",
-        ],
-        gridAutoRows: "1fr",
-        width: "100%",
-        alignItems: "center",
-      }}
-    >
+    <Grid as="nav" variant="grids.navbar">
       <Link
         as={GatsbyLink}
         to="/"
         activeClassName="active"
         variant="navLink"
         sx={{
-          fontSize: 5,
+          fontSize: 6,
           fontFamily: "heading",
           textDecoration: "none",
           textAlign: "center",
@@ -46,9 +33,7 @@ const Navbar = ({ uniqueParents }) => {
       <Flex sx={{ justifyContent: "space-around" }}>
         {uniqueParents.map((parentCategory, index) => (
           <Link
-            // as={GatsbyLink}
             key={index}
-            // to={parentCategory.slug.current}
             activeClassName="active"
             variant="navLink"
             onClick={() => selectedCategory(parentCategory.title)}
@@ -56,8 +41,9 @@ const Navbar = ({ uniqueParents }) => {
             {parentCategory.title}
           </Link>
         ))}
+        <Text variant="navLink">Cart</Text>
       </Flex>
-    </Box>
+    </Grid>
   );
 };
 

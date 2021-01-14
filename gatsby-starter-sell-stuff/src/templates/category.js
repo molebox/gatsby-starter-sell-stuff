@@ -9,48 +9,48 @@ const Category = ({ data }) => {
 
   return (
     <Layout>
-        <Flex
-          sx={{
-            maxWidth: 1000,
-            width: 500,
-            minHeight: 500,
-            m: "0 auto",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 3,
-            flexDirection: "column",
-          }}
-        >
-          {products.map((product) => (
+      <Flex
+        sx={{
+          maxWidth: 1000,
+          width: 500,
+          minHeight: 500,
+          m: "0 auto",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 3,
+          flexDirection: "column",
+        }}
+      >
+        {products.map((product) => (
+          <Flex
+            sx={{
+              justifyContent: "space-between",
+              border: "solid 1px",
+            }}
+          >
+            <Image
+              variant="mainProduct"
+              src={product.images[0].asset.fluid.src}
+            />
+            {/* <Img fluid={product.images[0].asset.fluid} /> */}
             <Flex
               sx={{
-                justifyContent: "space-between",
-                border: "solid 1px",
+                flexDirection: "column",
               }}
             >
-              <Image
-                variant="mainProduct"
-                src={product.images[0].asset.fluid.src}
-              />
-              {/* <Img fluid={product.images[0].asset.fluid} /> */}
-              <Flex
-                sx={{
-                  flexDirection: "column",
-                }}
-              >
-                <Text>{product.title}</Text>
-                <Text>
-                  {formatCurrencyString({
-                    value: product.price,
-                    currency: product.currency,
-                  })}
-                </Text>
-                <Text>{product.description.en}</Text>
-              </Flex>
+              <Text>{product.title}</Text>
+              <Text>
+                {formatCurrencyString({
+                  value: product.price,
+                  currency: product.currency,
+                })}
+              </Text>
+              <Text>{product.description.en}</Text>
             </Flex>
-          ))}
-          {/* <Image src={images[0].assets} alt={}/> */}
-        </Flex>
+          </Flex>
+        ))}
+        {/* <Image src={images[0].assets} alt={}/> */}
+      </Flex>
     </Layout>
   );
 };

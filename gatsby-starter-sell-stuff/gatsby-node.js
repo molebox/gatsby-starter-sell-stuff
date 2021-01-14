@@ -29,7 +29,6 @@ exports.createPages = ({graphql, actions}) => {
           const categories = result.data.allSanityCategory.edges || [];
           categories.forEach(({node}) => {
               const path = `/category/${node.slug.current}`;
-              console.log({node})
               createPage({
                   path,
                   component: require.resolve('./src/templates/category.js'),

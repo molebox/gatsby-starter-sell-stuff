@@ -55,41 +55,62 @@ const Categories = () => {
         bottom: 0,
         right: state.navOpen ? 0 : -500,
         width: ["100%", 500],
-        height: "calc(100vh - 100px)",
+        // height: "calc(100vh - 120px)",
+        height: "100%",
         padding: 1,
         flexGrow: 1,
         flexBasis: "sidebar",
         flexDirection: "column",
         alignItems: "center",
-        background: "#ffffff",
+        backgroundColor: "subtle",
       }}
     >
-      <Flex>
-        <Close
+      <Flex
+        sx={{
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          width: "90%",
+          mt: 6,
+          zIndex: 100,
+        }}
+      >
+        <Text as="h2" variant="cats">
+          Categories
+        </Text>
+        <Text
           sx={{
-            position: "absolute",
-            top: 1,
-            left: 1,
             ":hover": {
               cursor: "crosshair",
             },
           }}
           onClick={() => dispatch({ type: "navOpen", payload: false })}
-        />
-        <Text as="h2" variant="cats">
-          Categories
+        >
+          Close
         </Text>
       </Flex>
+
       {loading ? (
-        <Spinner />
+        <Flex
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+            height: "50%",
+          }}
+        >
+          <Spinner variant="styles.spinner" />
+        </Flex>
       ) : error ? (
         <Text as="p" sx={{ my: 5 }} variant="styles.p">
           {error.message}
         </Text>
       ) : (
         data && (
-          <Grid
-            columns="repeat(auto-fill, minmax(auto, 100px))"
+          <Flex
+            sx={{
+              flexDirection: "column",
+              width: "90%",
+              justifyContent: "start",
+            }}
             mt={5}
             visibility={state.navOpen ? "visible" : "hidden"}
           >
@@ -99,12 +120,13 @@ const Categories = () => {
                 key={index}
                 to={`/category/${slug.current}`}
                 activeClassName="active"
-                variant="navLink"
+                variant="linkEffect"
+                sx={{ fontSize: 4 }}
               >
                 {title}
               </Link>
             ))}
-          </Grid>
+          </Flex>
         )
       )}
     </Flex>

@@ -15,10 +15,6 @@ const Header = () => {
     }, [])
     .flat(2);
 
-  // const uniqueSubCategories = Array.from(
-  //   new Set(subCategories.map((parent) => parent.title))
-  // ).map((title) => subCategories.find((parent) => parent.title === title));
-
   return (
     <Box as="header" variant="header">
       <Navbar uniqueParents={parentCategories} />

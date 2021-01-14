@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex } from "theme-ui";
+import { Flex, Box } from "theme-ui";
 import { useShoppingCart } from "use-shopping-cart";
 
 const CheckoutDetails = () => {

@@ -8,20 +8,7 @@ import Img from "gatsby-image";
 import Categories from "./../components/general/categories";
 
 const Category = ({ data }) => {
-  console.log({ data });
-  const {
-    totalPrice,
-    redirectToCheckout,
-    cartCount,
-    addItem,
-    removeItem,
-    clearCart,
-  } = useShoppingCart();
   const products = data.sanityCategory.products;
-
-  // console.log(
-  //   props.data.sanityCategory
-  // )
 
   return (
     <Layout>
@@ -30,6 +17,7 @@ const Category = ({ data }) => {
         <Flex
           sx={{
             maxWidth: 1000,
+            width: 500,
             minHeight: 500,
             m: "0 auto",
             justifyContent: "center",
@@ -45,7 +33,7 @@ const Category = ({ data }) => {
                 border: "solid 1px",
               }}
             >
-              <Image src={product.images[0].asset.fluid.src} />
+              <Image variant="mainProduct" src={product.images[0].asset.fluid.src} />
               {/* <Img fluid={product.images[0].asset.fluid} /> */}
               <Flex
                 sx={{

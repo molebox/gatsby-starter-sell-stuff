@@ -1,19 +1,14 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
+import { formatCurrencyString } from "use-shopping-cart";
 import { Flex, Image, Text } from "theme-ui";
 import Layout from "./../components/general/layout";
-import Main from "../components/general/main";
-import Img from "gatsby-image";
-import Categories from "./../components/general/categories";
 
 const Category = ({ data }) => {
   const products = data.sanityCategory.products;
 
   return (
     <Layout>
-      <Categories />
-      <Main>
         <Flex
           sx={{
             maxWidth: 1000,
@@ -56,7 +51,6 @@ const Category = ({ data }) => {
           ))}
           {/* <Image src={images[0].assets} alt={}/> */}
         </Flex>
-      </Main>
     </Layout>
   );
 };

@@ -14,9 +14,6 @@ import fetch from 'isomorphic-fetch';
 const httpLink = createHttpLink({
     uri: `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.SANITY_DATASET}/default`,
     fetch,
-    // fetchOptions: {
-    //     mode: 'no-cors'
-    // }
   });
 
   const client = new ApolloClient({

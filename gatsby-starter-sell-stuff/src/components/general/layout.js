@@ -2,6 +2,8 @@ import React from "react";
 import { Box } from "theme-ui";
 import Footer from "./footer";
 import Header from "./header";
+import Main from './main';
+import Categories from './categories';
 
 const Layout = ({ children }) => {
   return (
@@ -30,8 +32,11 @@ const Layout = ({ children }) => {
         position: "relative",
       }}
     >
+      <Categories />
       <Header />
-      {children}
+      <Main>
+        {children}  
+      </Main>
       <Footer />
     </Box>
   );

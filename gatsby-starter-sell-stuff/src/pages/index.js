@@ -7,8 +7,6 @@ import Main from "../components/general/main";
 export default () => {
   return (
     <Layout>
-      <Categories />
-      <Main>
         <Box
           sx={{
             textAlign: "center",
@@ -18,7 +16,6 @@ export default () => {
             Home page yo!
           </Heading>
         </Box>
-      </Main>
     </Layout>
   );
 };

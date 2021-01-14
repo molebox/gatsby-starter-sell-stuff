@@ -36,11 +36,11 @@ const WithMetaData = ({element}) => {
         billingAddressCollection={true}
         mode="checkout-session"
         >
+           <SiteProvider>
             <ApolloProvider client={client}>
-                <SiteProvider>
                     {element}
-                </SiteProvider>
             </ApolloProvider>
+            </SiteProvider>
         </CartProvider>
     )
 }

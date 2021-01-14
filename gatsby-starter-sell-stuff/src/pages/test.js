@@ -1,3 +1,15 @@
+import React from "react";
+
+const Text = () => {
+  return (
+    <div>
+      <h1>Test page</h1>
+    </div>
+  );
+};
+
+export default Text;
+
 // import React from "react";
 // import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
 // import { graphql } from "gatsby";

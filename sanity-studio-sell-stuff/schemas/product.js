@@ -41,11 +41,6 @@ export default {
       type: 'string'
     },
     {
-      name: 'product_data',
-      title: 'Product Data',
-      type: 'metadata'
-    },
-    {
       title: 'SKU',
       name: 'sku',
       type: 'string',
@@ -96,11 +91,6 @@ export default {
           to: {type: 'category'}
         }
       ]
-    },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'localeBlockContent'
     }
   ],
   preview: {

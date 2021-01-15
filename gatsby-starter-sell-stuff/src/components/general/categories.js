@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef } from "react";
-import { Flex, Text, Close, Grid, Spinner, Link } from "theme-ui";
+import React, { useContext, useEffect } from "react";
+import { Flex, Text, Spinner, Link } from "theme-ui";
 import { StateContext, DispatchContext } from "../context";
 import { gql, useLazyQuery } from "@apollo/client";
 import { Link as GatsbyLink } from "gatsby";
@@ -33,7 +33,7 @@ const Categories = () => {
         return () => clearTimeout(timer);
       }
     });
-  }, [state.navOpen]);
+  }, [state.navOpen, dispatch]);
 
   const subCategories =
     data &&
@@ -63,26 +63,29 @@ const Categories = () => {
         flexDirection: "column",
         alignItems: "center",
         backgroundColor: "subtle",
+        zIndex: 100,
       }}
     >
       <Flex
         sx={{
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           alignItems: "flex-end",
           width: "90%",
           mt: 6,
           zIndex: 100,
         }}
       >
-        <Text as="h2" variant="cats">
+        {/* <Text as="h2" variant="cats">
           Categories
-        </Text>
+        </Text> */}
         <Text
           sx={{
             ":hover": {
               cursor: "crosshair",
             },
+            mb: 1,
           }}
+          as="p"
           onClick={() => dispatch({ type: "navOpen", payload: false })}
         >
           Close

@@ -13,8 +13,11 @@ import productVariant from './productVariant'
 import localeString from './locale/String'
 import localeText from './locale/Text'
 import localeBlockContent from './locale/BlockContent'
-import metadata from './metadata'
-import featuredProducts from './featuredProducts'
+import homePage from './homePage'
+import homePageSectionOne from './homePageSectionOne'
+import homePageSectionTwo from './homePageSectionTwo'
+import homePageSectionThree from './homePageSectionThree'
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,10 +31,12 @@ export default createSchema({
     product,
     vendor,
     category,
-    metadata,
-    featuredProducts,
+    homePage,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
+    homePageSectionOne,
+    homePageSectionTwo,
+    homePageSectionThree,
     blockContent,
     localeText,
     localeBlockContent,

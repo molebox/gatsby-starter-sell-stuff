@@ -8,7 +8,7 @@ require("dotenv").config({
 module.exports = {
     siteMetadata: {
         siteUrl: 'https://gatsby-starter-sell-stuff.netlify.app',
-        title: 'Gatsby Starter Sell Stuff',
+        title: 'Glasses Go Go',
         currency: 'USD',
         allowedCountries: ['US', 'GB', 'CA'],
         owner: 'Rich Haines'
@@ -56,7 +56,7 @@ module.exports = {
           },
           'gatsby-plugin-minify',
           `gatsby-transformer-sharp`, 
-          `gatsby-plugin-sharp`,
+          'gatsby-plugin-sharp',
           'gatsby-plugin-theme-ui'
     ]
 }

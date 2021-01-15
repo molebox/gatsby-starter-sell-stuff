@@ -21,10 +21,9 @@ const Navbar = ({ uniqueParents }) => {
         activeClassName="active"
         variant="navLink"
         sx={{
-          fontSize: 6,
+          fontSize: [3, 6],
           fontFamily: "heading",
           textDecoration: "none",
-          textAlign: "center",
         }}
       >
         {title}

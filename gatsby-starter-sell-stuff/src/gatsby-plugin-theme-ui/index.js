@@ -35,9 +35,7 @@ export default {
       fontWeight: "body",
     },
     cats: {
-      fontFamily: "body",
-      lineHeight: "body",
-      fontWeight: "body",
+      variant: "text.body",
       fontSize: 5,
       // transform: [null, "rotate(270deg)", "rotate(270deg)"],
     },
@@ -92,12 +90,12 @@ export default {
     display: "flex",
     alignItems: "center",
     width: "100%",
-    height: [200, 100],
+    height: "auto",
     gridArea: "nav",
   },
   navLink: {
     textDecoration: "none",
-    fontSize: 3,
+    fontSize: [2, 3],
     p: 2,
     color: "inherit",
     ":active": {
@@ -135,7 +133,11 @@ export default {
   },
   images: {
     mainProduct: {
-      width: 150,
+      width: "auto",
+      height: 200,
+    },
+    sectionTwo: {
+      width: 300,
       height: "auto",
     },
   },
@@ -159,19 +161,44 @@ export default {
       gridTemplateColumns: ["auto", "repeat(4, 1fr)"],
       gridTemplateRows: "minmax(auto, 100px) 1fr minmax(auto, 50px)",
       height: "100%",
-      minHeight: "100vh",
+      minHeight: "100%",
       position: "relative",
     },
     navbar: {
-      gridTemplateColumns: [
-        "auto",
-        "minmax(auto, 600px) auto minmax(auto, 500px)",
-      ],
-      gridAutoRows: "1fr",
+      gridTemplateColumns: ["minmax(auto, 500px) auto minmax(auto, 500px)"],
+      gridAutoRows: ["1fr 1fr", "1fr"],
       width: "100%",
       alignItems: "center",
       position: "relative",
       zIndex: 100,
+    },
+  },
+  homeSections: {
+    sectionOne: {
+      // width: '100%',
+      // backgroundPosition: 'center center',
+      // backgroundRepeat: 'no-repeat',
+      // backgroundSize: 'contain',
+      // height: '50%'
+      height: "100vh",
+      width: ["auto", "70%"],
+      margin: "0 auto",
+      position: "relative",
+    },
+    sectionOneTitle: {
+      position: "absolute",
+      top: ["10%", "30%"],
+      right: [3, 6],
+      fontSize: [1, 5],
+      variant: "text.heading",
+      maxWidth: 500,
+      flexDirection: "column",
+    },
+    sectionTwo: {
+      height: "100vh",
+    },
+    sectionThree: {
+      height: "100vh",
     },
   },
 };

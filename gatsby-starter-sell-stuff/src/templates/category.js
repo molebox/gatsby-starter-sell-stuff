@@ -12,7 +12,6 @@ const Category = ({ data }) => {
       <Flex
         sx={{
           maxWidth: 1000,
-          width: 500,
           minHeight: 500,
           m: "0 auto",
           justifyContent: "center",
@@ -21,12 +20,14 @@ const Category = ({ data }) => {
           flexDirection: "column",
         }}
       >
-        {products.map((product) => (
+        {products.map((product, index) => (
           <Flex
             sx={{
               justifyContent: "space-between",
               border: "solid 1px",
+              flexDirection: ["column", "row"],
             }}
+            key={index}
           >
             <Image
               variant="mainProduct"
@@ -36,6 +37,7 @@ const Category = ({ data }) => {
             <Flex
               sx={{
                 flexDirection: "column",
+                maxWidth: 300,
               }}
             >
               <Text>{product.title}</Text>

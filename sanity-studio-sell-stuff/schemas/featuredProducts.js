@@ -4,6 +4,11 @@ export default {
     type: 'document',
     fields: [
         {
+            name: 'title',
+            title: 'Title',
+            type: 'string'
+          },
+        {
             name: 'featuredProducts',
             title: 'Featured Products',
             type: 'array',

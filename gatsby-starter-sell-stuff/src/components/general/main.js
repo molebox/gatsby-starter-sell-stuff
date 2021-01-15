@@ -5,7 +5,6 @@ const Main = ({ children }) => {
   return (
     <Box
       as="main"
-      p={3}
       sx={{
         gridArea: "main",
       }}

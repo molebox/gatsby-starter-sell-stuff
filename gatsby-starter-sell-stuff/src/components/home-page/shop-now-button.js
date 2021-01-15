@@ -11,16 +11,19 @@ const ShopNowButton = () => {
         transform: "rotate(-15deg)",
         backgroundColor: "primary",
         color: "background",
-        height: 100,
-        my: 5,
-        zIndex: -100,
+        height: [60, 100],
+        p: 3,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontSize: 6,
+        fontSize: [2, 6],
         fontFamily: "body",
         textDecoration: "none",
         textTransform: "uppercase",
+        my: [2, 3],
+        ":hover": {
+          cursor: "crosshair",
+        },
       }}
     >
       Shop Now

@@ -50,7 +50,7 @@ const SectionTwo = ({ secTwo }) => {
 
   return (
     <Box variant="homeSections.sectionTwo">
-      <Box variant="images.sectionTwo" ref={imageOneRef}>
+      {/* <Box variant="images.sectionTwo" ref={imageOneRef}>
         <Image fluid={imageOne.asset.fluid} />
       </Box>
       <Box variant="images.sectionTwo" ref={imageTwoRef}>
@@ -58,7 +58,7 @@ const SectionTwo = ({ secTwo }) => {
       </Box>
       <Box variant="images.sectionTwo" ref={imageThreeRef}>
         <Image fluid={imageThree.asset.fluid} />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

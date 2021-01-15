@@ -22,7 +22,14 @@ export const query = graphql`
     sanityHomePage {
       sectionOne {
         title
-        image {
+        imageOne {
+          asset {
+            fluid(maxWidth: 1000) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        imageTwo {
           asset {
             fluid(maxWidth: 1000) {
               ...GatsbySanityImageFluid

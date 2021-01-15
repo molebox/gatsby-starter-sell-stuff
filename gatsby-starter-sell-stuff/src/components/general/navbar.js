@@ -24,6 +24,8 @@ const Navbar = ({ uniqueParents }) => {
           fontSize: [3, 6],
           fontFamily: "heading",
           textDecoration: "none",
+          textTransform: "uppercase",
+          alignSelf: ["center", "flex-start"],
         }}
       >
         {title}

@@ -6,7 +6,7 @@ const SectionThree = ({ secThree }) => {
   return (
     <Box variant="homeSections.sectionThree">
       <Text as="h2">{title}</Text>
-      <Image src={image.asset.fluid.src} />
+      {/* <Image src={image.asset.fluid.src} /> */}
     </Box>
   );
 };

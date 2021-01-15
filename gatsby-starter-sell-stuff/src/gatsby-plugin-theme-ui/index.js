@@ -125,7 +125,7 @@ export default {
       display: "block",
       width: "15%",
       paddingTop: 1,
-      borderBottom: "2px solid #212529",
+      borderBottom: "2px solid #DE3C4B",
       transition: "0.5s",
       position: "absolute",
       zIndex: 10,
@@ -136,15 +136,27 @@ export default {
       width: "auto",
       height: 200,
     },
-    sectionTwo: {
-      width: 300,
+    heroOne: {
+      width: ["auto", 900],
       height: "auto",
+      border: "solid 3px",
+    },
+    heroTwo: {
+      width: [200, 300],
+      height: "auto",
+      filter: `drop-shadow(2px 2px 0 #DE3C4B)
+      drop-shadow(-2px 2px 0 #DE3C4B)
+      drop-shadow(2px -2px 0 #DE3C4B)
+      drop-shadow(-2px -2px 0 #DE3C4B)`,
+      // position: 'absolute',
+      // top: ['20%', '10%'],
+      // right: '35%'
     },
   },
   grids: {
     layout: {
       p: 2,
-      width: "100%",
+      overflowX: "hidden",
       gap: 0,
       gridTemplateAreas: [
         `
@@ -180,19 +192,23 @@ export default {
       // backgroundRepeat: 'no-repeat',
       // backgroundSize: 'contain',
       // height: '50%'
-      height: "100vh",
-      width: ["auto", "70%"],
-      margin: "0 auto",
-      position: "relative",
+      // height: "100vh",
+      // width: ["auto", "70%"],
+      // margin: "0 auto",
+      // position: "relative",
+      flexDirection: ["column", "row"],
+      gap: 4,
     },
     sectionOneTitle: {
-      position: "absolute",
-      top: ["10%", "30%"],
-      right: [3, 6],
+      // position: "absolute",
+      // top: ["10%", "5%"],
+      // right: [3, '20%'],
       fontSize: [1, 5],
-      variant: "text.heading",
-      maxWidth: 500,
-      flexDirection: "column",
+      textTransform: "uppercase",
+      variant: "text.body",
+      maxWidth: 800,
+      height: "max-content",
+      my: 3,
     },
     sectionTwo: {
       height: "100vh",

@@ -5,7 +5,8 @@ import { Flex, Image, Text } from "theme-ui";
 import Layout from "./../components/general/layout";
 
 const Category = ({ data }) => {
-  const products = data.sanityCategory.products;
+  // const products = data.sanityCategory.products;
+  console.log({ data });
 
   return (
     <Layout>
@@ -20,7 +21,7 @@ const Category = ({ data }) => {
           flexDirection: "column",
         }}
       >
-        {products.map((product, index) => (
+        {/* {products.map((product, index) => (
           <Flex
             sx={{
               justifyContent: "space-between",
@@ -33,7 +34,7 @@ const Category = ({ data }) => {
               variant="mainProduct"
               src={product.images[0].asset.fluid.src}
             />
-            {/* <Img fluid={product.images[0].asset.fluid} /> */}
+ 
             <Flex
               sx={{
                 flexDirection: "column",
@@ -50,7 +51,7 @@ const Category = ({ data }) => {
               <Text>{product.description.en}</Text>
             </Flex>
           </Flex>
-        ))}
+        ))} */}
         {/* <Image src={images[0].assets} alt={}/> */}
       </Flex>
     </Layout>
@@ -60,15 +61,15 @@ const Category = ({ data }) => {
 export default Category;
 
 export const query = graphql`
-  query CategoryBySlug($slug: String) {
-    sanityCategory(slug: { current: { eq: $slug } }) {
+  query CategoryTemplateQuery($id: String!) {
+    category: sanityCategory(id: { eq: $id }) {
+      title
       products {
-        id
+        _id
         title
         price
-        currency
-        description {
-          en
+        slug {
+          current
         }
         images {
           asset {
@@ -77,10 +78,33 @@ export const query = graphql`
             }
           }
         }
-        slug {
-          current
-        }
       }
     }
   }
 `;
+
+// export const query = graphql`
+//   query CategoryBySlug($slug: String) {
+//     sanityCategory(slug: { current: { eq: $slug } }) {
+//       products {
+//         id
+//         title
+//         price
+//         currency
+//         description {
+//           en
+//         }
+//         images {
+//           asset {
+//             fluid {
+//               src
+//             }
+//           }
+//         }
+//         slug {
+//           current
+//         }
+//       }
+//     }
+//   }
+// `;

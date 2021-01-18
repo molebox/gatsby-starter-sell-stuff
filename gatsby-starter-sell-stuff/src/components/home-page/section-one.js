@@ -3,7 +3,6 @@ import { Box, Flex, Grid, Text } from "theme-ui";
 // import BackgroundImage from 'gatsby-background-image'
 import Image from "gatsby-image";
 import gsap from "gsap";
-import ShopNowButton from "./shop-now-button";
 
 const SectionOne = ({ secOne }) => {
   const { title, imageOne, imageTwo } = secOne;
@@ -19,7 +18,7 @@ const SectionOne = ({ secOne }) => {
   }, []);
 
   return (
-    <Flex as="section" sx={{ variant: "homeSections.sectionOne" }}>
+    <Flex as="section">
       <Box variant="images.heroOne">
         <Image fluid={imageOne.asset.fluid} />
       </Box>
@@ -44,16 +43,6 @@ const SectionOne = ({ secOne }) => {
           <Box variant="images.heroTwo">
             <Image fluid={imageTwo.asset.fluid} />
           </Box>
-          <Flex
-            sx={{
-              flexDirection: "column",
-              my: 3,
-            }}
-          >
-            <ShopNowButton />
-            <ShopNowButton />
-            <ShopNowButton />
-          </Flex>
         </Flex>
       </Flex>
     </Flex>

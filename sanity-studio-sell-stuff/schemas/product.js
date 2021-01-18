@@ -9,14 +9,6 @@ export default {
       type: 'string'
     },
     {
-      name: 'name',
-      title: 'Name',
-      type: 'slug',
-      options: {
-        source: 'title'
-      }
-    },
-    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -26,9 +18,13 @@ export default {
       }
     },
     {
-      name: 'id',
-      title: 'ID',
-      type: 'string'
+      name: 'productId',
+      title: 'Product ID',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+      validation: (rule) => rule.required()
     },
     {
       name: 'price',
@@ -46,11 +42,6 @@ export default {
       type: 'string',
     },
     {
-      title: 'Taxable',
-      name: 'taxable',
-      type: 'boolean'
-    },
-    {
       name: 'images',
       title: 'Images',
       type: 'array',
@@ -64,19 +55,6 @@ export default {
       ]
     },
     {
-      title: 'Tags',
-      name: 'tags',
-      type: 'array',
-      of: [
-        {
-          type: 'string'
-        }
-      ],
-      options: {
-        layout: 'tags'
-      }
-    },
-    {
       name: 'description',
       title: 'Description',
       type: 'localeString'
@@ -88,15 +66,15 @@ export default {
       of: [
         {
           type: 'reference',
-          to: {type: 'category'}
+          to: [{type: 'category'}]
         }
-      ]
-    }
+      ],
+      validation: (rule) => rule.required()
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      manufactor: 'manufactor.title',
       media: 'images[0]'
     }
   }

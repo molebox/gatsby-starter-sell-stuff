@@ -24,22 +24,22 @@ const Header = () => {
 
 export default Header;
 
-export const query = graphql`
-  query GetCategories {
-    allSanityCategory {
-      nodes {
-        title
-        slug {
-          current
-        }
-        subCategories {
-          title
-          slug {
-            current
-          }
-        }
-        isParentCategory
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query GetCategories {
+//     allSanityCategory {
+//       nodes {
+//         title
+//         slug {
+//           current
+//         }
+//         subCategories {
+//           title
+//           slug {
+//             current
+//           }
+//         }
+//         isParentCategory
+//       }
+//     }
+//   }
+// `;

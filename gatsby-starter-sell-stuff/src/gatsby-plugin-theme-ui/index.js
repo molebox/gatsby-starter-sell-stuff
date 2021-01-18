@@ -5,7 +5,7 @@ export default {
     body: "Abel",
     heading: "Bodoni Moda, serif",
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96, 110],
   fontWeights: {
     body: 400,
     heading: 700,
@@ -17,10 +17,10 @@ export default {
   },
   colors: {
     text: "#212529",
-    background: "#f8f9fa",
+    background: "#edeae3",
     primary: "#DE3C4B",
     secondary: "#ced4da",
-    muted: "#495057",
+    muted: "#a2a09d",
     subtle: "#e9ecef",
   },
   text: {
@@ -94,8 +94,11 @@ export default {
     gridArea: "nav",
   },
   navLink: {
+    variant: "text.heading",
+    fontWeight: "body",
     textDecoration: "none",
-    fontSize: [2, 3],
+    // textTransform: "uppercase",
+    fontSize: [4, 7],
     p: 2,
     color: "inherit",
     ":active": {
@@ -133,8 +136,10 @@ export default {
   },
   images: {
     mainProduct: {
-      width: "auto",
-      height: 200,
+      filter: `drop-shadow(2px 2px 0 #DE3C4B)
+      drop-shadow(-2px 2px 0 #DE3C4B)
+      drop-shadow(2px -2px 0 #DE3C4B)
+      drop-shadow(-2px -2px 0 #DE3C4B)`,
     },
     heroOne: {
       width: ["auto", 900],
@@ -142,15 +147,12 @@ export default {
       border: "solid 3px",
     },
     heroTwo: {
-      width: [200, 300],
+      width: [200, 400],
       height: "auto",
       filter: `drop-shadow(2px 2px 0 #DE3C4B)
       drop-shadow(-2px 2px 0 #DE3C4B)
       drop-shadow(2px -2px 0 #DE3C4B)
       drop-shadow(-2px -2px 0 #DE3C4B)`,
-      // position: 'absolute',
-      // top: ['20%', '10%'],
-      // right: '35%'
     },
   },
   grids: {
@@ -171,9 +173,8 @@ export default {
      `,
       ],
       gridTemplateColumns: ["auto", "repeat(4, 1fr)"],
-      gridTemplateRows: "minmax(auto, 100px) 1fr minmax(auto, 50px)",
-      height: "100%",
-      minHeight: "100%",
+      gridTemplateRows: "minmax(auto, 80px) 1fr minmax(auto, 50px)",
+      height: "100vh",
       position: "relative",
     },
     navbar: {

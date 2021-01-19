@@ -34,9 +34,9 @@ export default {
       lineHeight: "body",
       fontWeight: "body",
     },
-    cats: {
+    productHeading: {
       variant: "text.body",
-      fontSize: 5,
+      fontSize: 8,
       // transform: [null, "rotate(270deg)", "rotate(270deg)"],
     },
   },
@@ -52,7 +52,6 @@ export default {
     h1: {
       variant: "text.heading",
       fontSize: [4, 7],
-      my: 2,
     },
     h2: {
       variant: "text.heading",
@@ -86,13 +85,6 @@ export default {
     spinner: {
       color: "text",
     },
-  },
-  header: {
-    // display: "flex",
-    // alignItems: "center",
-    // width: "100%",
-    // height: "auto",
-    // gridArea: "nav",
   },
   navLink: {
     variant: "text.heading",
@@ -155,7 +147,6 @@ export default {
   },
   grids: {
     layout: {
-      // overflowX: "hidden",
       gap: 0,
       gridTemplateAreas: [
         `
@@ -174,6 +165,13 @@ export default {
       height: "100%",
       minHeight: "100vh",
       position: "relative",
+    },
+    product: {
+      gap: 0,
+      gridTemplateColumns: ["auto", "repeat(5, 1fr)"],
+      gridTemplateRows: ["auto", "5% 10% 1fr 1fr"],
+      height: "100vh",
+      width: "100%",
     },
     navbar: {
       gridTemplateColumns: ["minmax(auto, 500px) auto minmax(auto, 500px)"],

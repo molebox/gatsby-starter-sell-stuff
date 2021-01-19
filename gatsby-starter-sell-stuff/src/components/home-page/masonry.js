@@ -20,6 +20,7 @@ const Masonry = ({ images }) => {
       let TL = gsap.timeline();
 
       TL.from(imagesRef.current, {
+        opacity: 0,
         duration: 3,
         ease: "power3",
         x: () => "+=" + getRandomInteger(-100, 100) + "%",
@@ -33,7 +34,7 @@ const Masonry = ({ images }) => {
     <Box
       sx={{
         columnGap: "0",
-        columns: "4 400px",
+        columns: "6 300px",
         p: 2,
         textAlign: "center",
         maxWidth: 1440,

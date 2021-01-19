@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from "react";
-import { Flex, Text } from "theme-ui";
+import { Flex, Text, Box } from "theme-ui";
+import SEO from "react-seo-component";
 import Layout from "../components/general/layout";
 import { graphql, Link as GatsbyLink } from "gatsby";
-
 import gsap from "gsap";
 import { useSiteMetadata } from "../components/useSiteMetadata";
 import Masonry from "../components/home-page/masonry";
 
 export default ({ data }) => {
-  const { title } = useSiteMetadata();
+  const { title, description } = useSiteMetadata();
   const titleRef = useRef();
   const images = data.sanityHomePage.images;
 
@@ -30,6 +30,16 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO
+        title={title}
+        titleTemplate=""
+        titleSeparator=""
+        description={description}
+        image=""
+        pathname={`https://gatsby-starter-sell-stuff.netlify.app/`}
+        twitterUsername="@studio_hungry"
+        author="Rich Haines"
+      />
       <Flex
         sx={{
           flexDirection: "column",
@@ -38,9 +48,11 @@ export default ({ data }) => {
           height: "100%",
         }}
       >
-        <Text ref={titleRef} as="h1" variant="styles.h1">
-          {title}
-        </Text>
+        <Box sx={{ my: 5 }}>
+          <Text ref={titleRef} as="h1" variant="styles.h1">
+            {title}
+          </Text>
+        </Box>
         <Masonry images={images} />
       </Flex>
     </Layout>
@@ -52,7 +64,7 @@ export const query = graphql`
     sanityHomePage {
       images {
         asset {
-          fixed(width: 400) {
+          fixed(width: 300) {
             ...GatsbySanityImageFixed
           }
         }

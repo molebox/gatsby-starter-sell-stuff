@@ -7,6 +7,8 @@ const Main = ({ children }) => {
       as="main"
       sx={{
         gridArea: "main",
+        maxWidth: 1440,
+        m: "0 auto",
       }}
     >
       {children}

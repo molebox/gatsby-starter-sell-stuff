@@ -1,26 +1,45 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { formatCurrencyString } from "use-shopping-cart";
-import { Flex, Image, Text } from "theme-ui";
+import { Box, Image, Text } from "theme-ui";
 import Layout from "./../components/general/layout";
+import ProductLayout from "../components/product/product-layout";
 
 const Product = ({ data }) => {
-  // const products = data.sanityCategory.products;
-  console.log({ data });
+  const product = data.product;
+  const { title, price, images } = data.product;
+  console.log({ product });
 
   return (
     <Layout>
-      <Flex
-        sx={{
-          maxWidth: 1000,
-          minHeight: 500,
-          m: "0 auto",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 3,
-          flexDirection: "column",
-        }}
-      ></Flex>
+      <ProductLayout>
+        <Box sx={{ gridRow: 2, gridColumn: "2 / 5", textAlign: "center" }}>
+          <Text as="h1" variant="productHeading">
+            {title}
+          </Text>
+        </Box>
+        <Box
+          sx={{
+            gridRow: 4,
+            gridColumn: 1,
+            textAlign: "center",
+          }}
+        >
+          <Text as="h1" variant="productHeading">
+            ${price}
+          </Text>
+        </Box>
+        <Box
+          sx={{
+            gridRow: [1, 4],
+            gridColumn: [5],
+            textAlign: "center",
+          }}
+        >
+          <Text as="h1" variant="productHeading">
+            BUY
+          </Text>
+        </Box>
+      </ProductLayout>
     </Layout>
   );
 };

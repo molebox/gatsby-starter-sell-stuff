@@ -1,12 +1,13 @@
 import React, { useContext, useRef, useEffect } from "react";
 import { Button, Box, Flex, Link } from "theme-ui";
-import { DispatchContext } from "../context";
+import { DispatchContext, StateContext } from "../context";
 import CategoryDropdown from "./category-dropdown";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Header = () => {
   const dispatch = useContext(DispatchContext);
+  const state = useContext(StateContext);
   const headerRef = useRef(null);
 
   useEffect(() => {
@@ -62,12 +63,14 @@ const Header = () => {
       <Link
         sx={{
           fontFamily: "body",
+          textTransform: "uppercase",
+          fontSize: [3, 5],
         }}
         activeClassName="active"
         variant="navLink"
-        onClick={() => dispatch({ type: "cartOpen", payload: true })}
+        onClick={() => dispatch({ type: "cartOpen", payload: !state.cartOpen })}
       >
-        CART
+        cart
       </Link>
     </Flex>
   );

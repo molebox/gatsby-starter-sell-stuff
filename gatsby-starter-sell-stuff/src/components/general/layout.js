@@ -5,6 +5,7 @@ import Header from "../base/header";
 import Main from "./main";
 import CategorySection from "./../base/category-section";
 import { graphql, useStaticQuery } from "gatsby";
+import Cart from "./../cart/cart";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(query);
@@ -12,6 +13,7 @@ const Layout = ({ children }) => {
   return (
     <Grid variant="grids.layout">
       <CategorySection categories={categories} />
+      <Cart />
       <Header />
       <Main>{children}</Main>
       <Footer />

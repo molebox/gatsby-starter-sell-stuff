@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Flex, Link } from "theme-ui";
+import { Box, Flex, Link } from "theme-ui";
 import { Link as GatsbyLink } from "gatsby";
 import { useSiteMetadata } from "./../useSiteMetadata";
 import { DispatchContext } from "../context";
@@ -16,10 +16,22 @@ const Header = () => {
         justifyContent: ["space-between"],
         alignItems: "center",
         gridArea: "nav",
-        borderBottom: "solid 2px",
+        p: 3,
+        // borderBottom: "solid 2px",
       }}
     >
-      <Link
+      <Box
+        onClick={() => dispatch({ type: "navOpen", payload: true })}
+        sx={{
+          cursor: "crosshair",
+        }}
+      >
+        <Box
+          sx={{ backgroundColor: "text", height: 2, width: "20px", my: 2 }}
+        />
+        <Box sx={{ backgroundColor: "text", height: 2, width: "20px" }} />
+      </Box>
+      {/* <Link
         as={GatsbyLink}
         to="/"
         activeClassName="active"
@@ -29,7 +41,7 @@ const Header = () => {
         }}
       >
         {title}
-      </Link>
+      </Link> */}
       <Link
         sx={{
           fontFamily: "body",

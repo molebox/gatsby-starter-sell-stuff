@@ -19,7 +19,7 @@ export default {
     text: "#212529",
     background: "#edeae3",
     primary: "#DE3C4B",
-    secondary: "#ced4da",
+    secondary: "#E7E3DA",
     muted: "#a2a09d",
     subtle: "#e9ecef",
   },
@@ -98,7 +98,7 @@ export default {
     fontWeight: "body",
     textDecoration: "none",
     // textTransform: "uppercase",
-    fontSize: [4, 7],
+    fontSize: [4, 6],
     p: 2,
     color: "inherit",
     ":active": {
@@ -109,6 +109,8 @@ export default {
     },
   },
   linkEffect: {
+    variant: "text.heading",
+    fontWeight: "body",
     textDecoration: "none",
     fontSize: 3,
     p: 2,
@@ -126,10 +128,10 @@ export default {
     ":after": {
       content: "''",
       display: "block",
-      width: "15%",
-      paddingTop: 1,
-      borderBottom: "2px solid #DE3C4B",
-      transition: "0.5s",
+      width: "0%",
+      paddingTop: 3,
+      borderBottom: "5px solid #DE3C4B",
+      transition: "1s",
       position: "absolute",
       zIndex: 10,
     },
@@ -157,7 +159,6 @@ export default {
   },
   grids: {
     layout: {
-      p: 2,
       overflowX: "hidden",
       gap: 0,
       gridTemplateAreas: [
@@ -174,7 +175,8 @@ export default {
       ],
       gridTemplateColumns: ["auto", "repeat(4, 1fr)"],
       gridTemplateRows: "minmax(auto, 80px) 1fr minmax(auto, 50px)",
-      height: "100vh",
+      height: "100%",
+      minHeight: "100vh",
       position: "relative",
     },
     navbar: {
@@ -186,36 +188,14 @@ export default {
       zIndex: 100,
     },
   },
-  homeSections: {
-    sectionOne: {
-      // width: '100%',
-      // backgroundPosition: 'center center',
-      // backgroundRepeat: 'no-repeat',
-      // backgroundSize: 'contain',
-      // height: '50%'
-      // height: "100vh",
-      // width: ["auto", "70%"],
-      // margin: "0 auto",
-      // position: "relative",
-      flexDirection: ["column", "row"],
-      gap: 4,
-    },
-    sectionOneTitle: {
-      // position: "absolute",
-      // top: ["10%", "5%"],
-      // right: [3, '20%'],
-      fontSize: [1, 5],
-      textTransform: "uppercase",
-      variant: "text.body",
-      maxWidth: 800,
-      height: "max-content",
-      my: 3,
-    },
-    sectionTwo: {
-      height: "100vh",
-    },
-    sectionThree: {
-      height: "100vh",
+  buttons: {
+    close: {
+      position: "absolute",
+      top: 5,
+      right: 5,
+      ":hover": {
+        cursor: "crosshair",
+      },
     },
   },
 };

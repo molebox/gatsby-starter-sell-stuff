@@ -1,65 +1,47 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Box, Flex, Link, Text, Grid } from "theme-ui";
+import React, { useRef, useEffect } from "react";
+import { Flex, Text } from "theme-ui";
 import Layout from "../components/general/layout";
 import { graphql, Link as GatsbyLink } from "gatsby";
-import Image from "gatsby-image";
+
 import gsap from "gsap";
+import { useSiteMetadata } from "../components/useSiteMetadata";
+import Masonry from "../components/home-page/masonry";
 
 export default ({ data }) => {
-  console.log({ data });
-  const categories = data.allSanityCategory.nodes || [];
-  const featuredProducts = data.sanityHomePage.featuredProducts;
-  console.log({ featuredProducts });
+  const { title } = useSiteMetadata();
+  const titleRef = useRef();
+  const images = data.sanityHomePage.images;
 
-  // const getRandomInteger = (min, max) =>
-  //   Math.floor(Math.random() * (max - min + 1) + min);
-
-  // useEffect(() => {
-  //   if (typeof window !== undefined) {
-  //     let TL = gsap.timeline({
-  //       duration: 1,
-  //       ease: 'expo',
-  //       startAt: {y: '10%'},
-  //       y: '0%',
-  //     });
-
-  //     if (images.length) {
-  //       TL.from(imageRef.current, {
-  //         duration: 2.5,
-  //         ease: 'power3',
-  //         x: () => '+='+getRandomInteger(-100,100)+'%',
-  //         y: () => '+='+getRandomInteger(-100,100)+'%',
-  //         rotation: () => getRandomInteger(-20,20)
-  //         // duration: 1,
-  //         // ease: 'power3',
-  //         // x: 0,
-  //         // y: 0,
-  //         // opacity: 1,
-  //         // rotation: () => getRandomInteger(-20,20),
-  //         // delay: 1
-  //       }).play()
-  //     }
-
-  //   }
-  // }, [images]);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      gsap.from(
+        titleRef.current,
+        {
+          delay: 1,
+          duration: 1.5,
+          y: 30,
+          ease: "power4",
+          opacity: 0,
+        },
+        "text"
+      );
+    }
+  }, []);
 
   return (
     <Layout>
       <Flex
         sx={{
-          flexDirection: ["column", "row"],
-          alignItems: ["center"],
-          justifyContent: ["start", "space-around"],
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           height: "100%",
         }}
       >
-        <Flex
-          sx={{
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "start",
-          }}
-        ></Flex>
+        <Text ref={titleRef} as="h1" variant="styles.h1">
+          {title}
+        </Text>
+        <Masonry images={images} />
       </Flex>
     </Layout>
   );
@@ -68,80 +50,13 @@ export default ({ data }) => {
 export const query = graphql`
   query IndexQuery {
     sanityHomePage {
-      featuredProducts {
-        title
-        price
-        slug {
-          current
-        }
-        description {
-          en
-        }
-        images {
-          asset {
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+      images {
+        asset {
+          fixed(width: 400) {
+            ...GatsbySanityImageFixed
           }
         }
       }
     }
   }
 `;
-
-// export const query = graphql`
-//   query MyQuery {
-//     sanityHomePage {
-//       sectionOne {
-//         title
-//         imageOne {
-//           asset {
-//             fluid(maxWidth: 1000) {
-//               ...GatsbySanityImageFluid
-//             }
-//           }
-//         }
-//         imageTwo {
-//           asset {
-//             fluid(maxWidth: 1000) {
-//               ...GatsbySanityImageFluid
-//             }
-//           }
-//         }
-//       }
-//       sectionTwo {
-//         images {
-//           asset {
-//             fluid {
-//               ...GatsbySanityImageFluid
-//             }
-//           }
-//         }
-//         title
-//       }
-//       sectionThree {
-//         image {
-//           asset {
-//             fluid {
-//               ...GatsbySanityImageFluid
-//             }
-//           }
-//         }
-//         title
-//       }
-//       featuredProducts {
-//         title
-//         slug {
-//           current
-//         }
-//         images {
-//           asset {
-//             fluid {
-//               ...GatsbySanityImageFluid
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;

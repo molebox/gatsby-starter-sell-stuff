@@ -8,7 +8,7 @@ require("dotenv").config({
 module.exports = {
     siteMetadata: {
         siteUrl: 'https://gatsby-starter-sell-stuff.netlify.app',
-        title: 'Sell Stuff',
+        title: 'gatsby-starter-sell-stuff',
         currency: 'USD',
         allowedCountries: ['US', 'GB', 'CA'],
         owner: 'Rich Haines'

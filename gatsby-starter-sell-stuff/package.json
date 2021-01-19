@@ -35,10 +35,12 @@
     "gsap": "^3.5.1",
     "isomorphic-fetch": "^3.0.0",
     "react": "^17.0.1",
+    "react-animated-burgers": "^1.2.8",
     "react-dom": "npm:@hot-loader/react-dom",
     "react-helmet": "^6.1.0",
     "react-seo-component": "^2.0.2",
     "stripe": "^8.130.0",
+    "styled-components": "^5.2.1",
     "theme-ui": "^0.3.5",
     "use-shopping-cart": "^2.3.0"
   },

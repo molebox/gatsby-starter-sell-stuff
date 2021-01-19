@@ -51,7 +51,8 @@ export default {
     },
     h1: {
       variant: "text.heading",
-      fontSize: 7,
+      fontSize: [4, 7],
+      my: 2,
     },
     h2: {
       variant: "text.heading",
@@ -87,11 +88,11 @@ export default {
     },
   },
   header: {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    height: "auto",
-    gridArea: "nav",
+    // display: "flex",
+    // alignItems: "center",
+    // width: "100%",
+    // height: "auto",
+    // gridArea: "nav",
   },
   navLink: {
     variant: "text.heading",
@@ -137,16 +138,11 @@ export default {
     },
   },
   images: {
-    mainProduct: {
-      filter: `drop-shadow(2px 2px 0 #DE3C4B)
-      drop-shadow(-2px 2px 0 #DE3C4B)
-      drop-shadow(2px -2px 0 #DE3C4B)
-      drop-shadow(-2px -2px 0 #DE3C4B)`,
-    },
+    mainProduct: {},
     heroOne: {
-      width: ["auto", 900],
+      width: [300, 800],
       height: "auto",
-      border: "solid 3px",
+      my: 3,
     },
     heroTwo: {
       width: [200, 400],
@@ -159,7 +155,7 @@ export default {
   },
   grids: {
     layout: {
-      overflowX: "hidden",
+      // overflowX: "hidden",
       gap: 0,
       gridTemplateAreas: [
         `
@@ -189,10 +185,14 @@ export default {
     },
   },
   buttons: {
+    burger: {
+      background: "transparent",
+      cursor: "crosshair",
+    },
     close: {
       position: "absolute",
-      top: 5,
-      right: 5,
+      top: "3%",
+      left: "1.5%",
       ":hover": {
         cursor: "crosshair",
       },

@@ -19,12 +19,12 @@ const Footer = () => {
       <Link as={GatsbyLink} to="/" sx={{ variant: "styles.navlink", p: 2 }}>
         Home
       </Link>
-      <Link as={GatsbyLink} to="/" sx={{ variant: "styles.navlink", p: 2 }}>
+      {/* <Link as={GatsbyLink} to="/" sx={{ variant: "styles.navlink", p: 2 }}>
         Blog
       </Link>
       <Link as={GatsbyLink} to="/" sx={{ variant: "styles.navlink", p: 2 }}>
         About
-      </Link>
+      </Link> */}
       <Box sx={{ mx: "auto" }} />
       <Box sx={{ p: 2 }}>
         © {new Date().getFullYear()} {owner}

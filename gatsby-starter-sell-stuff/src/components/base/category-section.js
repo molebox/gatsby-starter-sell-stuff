@@ -31,12 +31,12 @@ const CategorySection = ({ categories }) => {
     <Flex
       as="section"
       sx={{
-        transition: "top 250ms ease-in-out",
+        transition: "top 650ms ease-in-out",
         position: "fixed",
         bottom: 0,
         top: state.navOpen ? 0 : -1000,
         width: "100vw",
-        // height: "calc(100vh - 120px)",
+        // height: "calc(100% - 80px)",
         height: "100%",
         padding: 1,
         flexGrow: 1,
@@ -48,7 +48,7 @@ const CategorySection = ({ categories }) => {
         zIndex: 100,
       }}
     >
-      <Close onClick={() => dispatch({ type: "navOpen", payload: false })} />
+      {/* <Close onClick={() => dispatch({ type: "navOpen", payload: false })} /> */}
       <Flex
         sx={{
           flexDirection: "column",
@@ -57,13 +57,13 @@ const CategorySection = ({ categories }) => {
           maxWidth: 1440,
         }}
       >
-        {categories.map((category) => {
+        {categories.map((category, index) => {
           const numberOfProducts = category.products.length
             ? category.products.length
             : 0;
           return (
             <Flex
-              key={category.id}
+              key={index}
               sx={{ alignItems: "center", width: "max-content" }}
             >
               <Box variant="linkEffect">

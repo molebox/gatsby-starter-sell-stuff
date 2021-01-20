@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Flex, Text, Box } from "theme-ui";
 import SEO from "react-seo-component";
-import Layout from "../components/base/layout";
 import { graphql } from "gatsby";
 import gsap from "gsap";
 import { useSiteMetadata } from "../components/useSiteMetadata";
@@ -29,7 +28,7 @@ export default ({ data }) => {
   }, []);
 
   return (
-    <Layout>
+    <>
       <SEO
         title={title}
         titleTemplate=""
@@ -55,7 +54,7 @@ export default ({ data }) => {
         </Box>
         <Masonry images={images} />
       </Flex>
-    </Layout>
+    </>
   );
 };
 

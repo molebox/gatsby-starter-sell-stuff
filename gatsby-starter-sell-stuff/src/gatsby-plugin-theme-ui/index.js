@@ -16,8 +16,8 @@ export default {
     heading: 1.125,
   },
   colors: {
-    text: "#212529",
-    background: "#edeae3",
+    text: "#edeae3",
+    background: "#212529",
     primary: "#DE3C4B",
     secondary: "#E7E3DA",
     muted: "#a2a09d",
@@ -214,7 +214,7 @@ export default {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "secondary",
+    backgroundColor: "background",
     zIndex: 100,
   },
 };

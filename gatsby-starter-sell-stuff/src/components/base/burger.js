@@ -7,6 +7,7 @@ const Burger = () => {
   const state = useContext(StateContext);
   return (
     <HamburgerSpring
+      barColor="white"
       buttonWidth={20}
       isActive={state.navOpen}
       toggleButton={() =>

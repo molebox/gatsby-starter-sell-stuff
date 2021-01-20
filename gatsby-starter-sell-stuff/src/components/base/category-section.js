@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Flex, Link, Text, Close, Box } from "theme-ui";
+import { Flex, Link, Text, Box } from "theme-ui";
 import { Link as GatsbyLink } from "gatsby";
 import gsap from "gsap";
 import { DispatchContext, StateContext } from "./../context";
@@ -30,25 +30,11 @@ const CategorySection = ({ categories }) => {
   return (
     <Flex
       as="section"
+      variant="categorySection"
       sx={{
-        transition: "top 650ms ease-in-out",
-        position: "fixed",
-        bottom: 0,
         top: state.navOpen ? 0 : -1000,
-        width: "100vw",
-        // height: "calc(100% - 80px)",
-        height: "100%",
-        padding: 1,
-        flexGrow: 1,
-        flexBasis: "sidebar",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "secondary",
-        zIndex: 100,
       }}
     >
-      {/* <Close onClick={() => dispatch({ type: "navOpen", payload: false })} /> */}
       <Flex
         sx={{
           flexDirection: "column",

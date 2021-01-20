@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { Button, Box, Flex, Link } from "theme-ui";
+import { Flex, Link } from "theme-ui";
 import { DispatchContext, StateContext } from "../context";
-import CategoryDropdown from "./category-dropdown";
+import Burger from "./burger";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -48,18 +48,7 @@ const Header = () => {
         height: "80px",
       }}
     >
-      <CategoryDropdown />
-      {/* <Link
-        as={GatsbyLink}
-        to="/"
-        activeClassName="active"
-        variant="navLink"
-        sx={{
-          alignSelf: ["center", "flex-start"],
-        }}
-      >
-        {title}
-      </Link> */}
+      <Burger />
       <Link
         sx={{
           fontFamily: "body",

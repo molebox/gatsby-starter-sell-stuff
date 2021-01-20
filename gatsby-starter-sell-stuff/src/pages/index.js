@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Flex, Text, Box } from "theme-ui";
 import SEO from "react-seo-component";
-import Layout from "../components/general/layout";
+import Layout from "../components/base/layout";
 import { graphql } from "gatsby";
 import gsap from "gsap";
 import { useSiteMetadata } from "../components/useSiteMetadata";

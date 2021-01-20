@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { Box, Image, Text } from "theme-ui";
-import Layout from "./../components/general/layout";
+import Layout from "../components/base/layout";
 import ProductLayout from "../components/product/product-layout";
 
 const Product = ({ data }) => {

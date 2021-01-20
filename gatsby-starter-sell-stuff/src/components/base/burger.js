@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { DispatchContext, StateContext } from "../context";
 import { HamburgerSpring } from "react-animated-burgers";
 
-const CategoryDropdown = () => {
+const Burger = () => {
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
   return (
@@ -16,4 +16,4 @@ const CategoryDropdown = () => {
   );
 };
 
-export default CategoryDropdown;
+export default Burger;

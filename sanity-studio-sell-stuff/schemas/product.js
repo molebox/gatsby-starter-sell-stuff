@@ -42,6 +42,15 @@ export default {
       type: 'string',
     },
     {
+      name: 'mainImage',
+      title: 'Main Image',
+      type: 'image',
+      description: 'This is the main image to be shown in the category page. An image showing the product being used such as being worn by a model. A portrait orientation will work best.',
+      options: {
+          hotspot: true
+      }
+  },
+    {
       name: 'images',
       title: 'Images',
       type: 'array',

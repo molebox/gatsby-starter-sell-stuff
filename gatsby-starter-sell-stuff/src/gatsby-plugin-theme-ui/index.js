@@ -8,8 +8,8 @@ export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96, 110],
   fontWeights: {
     body: 400,
-    heading: 700,
-    bold: 700,
+    heading: 500,
+    bold: 500,
   },
   lineHeights: {
     body: 1.5,
@@ -36,8 +36,22 @@ export default {
     },
     productHeading: {
       variant: "text.body",
-      fontSize: 8,
+      fontSize: [5, 8],
       // transform: [null, "rotate(270deg)", "rotate(270deg)"],
+    },
+    productHeadingCategory: {
+      variant: "text.body",
+      fontSize: [3, 6],
+      // transform: [null, "rotate(270deg)", "rotate(270deg)"],
+    },
+    categoryHeading: {
+      variant: "text.heading",
+      fontSize: [5, 8],
+      borderBottom: "solid 2px",
+      mb: 4,
+    },
+    categoryPrice: {
+      fontSize: [3, 5],
     },
   },
   sizes: {
@@ -173,14 +187,6 @@ export default {
       height: "100vh",
       width: "100%",
     },
-    navbar: {
-      gridTemplateColumns: ["minmax(auto, 500px) auto minmax(auto, 500px)"],
-      gridAutoRows: ["1fr 1fr", "1fr"],
-      width: "100%",
-      alignItems: "center",
-      position: "relative",
-      zIndex: 100,
-    },
   },
   buttons: {
     burger: {
@@ -195,5 +201,20 @@ export default {
         cursor: "crosshair",
       },
     },
+  },
+  categorySection: {
+    transition: "top 650ms ease-in-out",
+    position: "fixed",
+    bottom: 0,
+    width: "100vw",
+    height: "100%",
+    padding: 1,
+    flexGrow: 1,
+    flexBasis: "sidebar",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "secondary",
+    zIndex: 100,
   },
 };

@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid } from "theme-ui";
 import Footer from "./footer";
-import Header from "../base/header";
+import Header from "./header";
 import Main from "./main";
-import CategorySection from "./../base/category-section";
+import CategorySection from "./category-section";
 import { graphql, useStaticQuery } from "gatsby";
-import Cart from "./../cart/cart";
+import Cart from "../cart/cart";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(query);

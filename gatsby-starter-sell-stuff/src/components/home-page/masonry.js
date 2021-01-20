@@ -8,8 +8,10 @@ import gsap from "gsap";
 const Masonry = ({ images }) => {
   const imagesRef = useRef([]);
   imagesRef.current = [];
+
   const getRandomInteger = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
+
   const addToRefs = (el) => {
     if (el && !imagesRef.current.includes(el)) {
       imagesRef.current.push(el);
@@ -29,7 +31,7 @@ const Masonry = ({ images }) => {
         rotation: () => getRandomInteger(-20, 20),
       }).play();
     }
-  }, [images]);
+  }, []);
 
   return (
     <Box
@@ -43,7 +45,9 @@ const Masonry = ({ images }) => {
     >
       {images.map((image, index) => (
         <Box ref={addToRefs} key={index}>
-          {image.asset ? <Image fixed={image.asset.fixed} loading="eager" /> : null}
+          {image.asset ? (
+            <Image fixed={image.asset.fixed} loading="eager" />
+          ) : null}
         </Box>
       ))}
     </Box>
@@ -51,16 +55,3 @@ const Masonry = ({ images }) => {
 };
 
 export default Masonry;
-
-// const Block = ({children}) => (
-//     <Box
-//     sx={{
-//         width: '400px',
-//         display: 'inline-block',
-//         m: 1,
-//         flex: '1 0 auto',
-//     }}
-//     >
-//         {children}
-//     </Box>
-// )

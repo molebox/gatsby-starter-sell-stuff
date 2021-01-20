@@ -23,6 +23,21 @@ module.exports = {
           },
         },
         {
+          resolve: `gatsby-plugin-nprogress`,
+          options: {
+            // Setting a color is optional.
+            color: `#DE3C4B`,
+            // Disable the loading spinner.
+            showSpinner: false,
+          },
+        },
+        { 
+          resolve: `gatsby-plugin-transition-link`,
+          options: {
+            injectPageProps: false,
+          },
+        },
+        {
             resolve: 'gatsby-source-filesystem',
             options: {
               name: 'pages',

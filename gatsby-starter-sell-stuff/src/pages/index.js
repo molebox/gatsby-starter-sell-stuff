@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { Flex, Text, Box } from "theme-ui";
 import SEO from "react-seo-component";
 import Layout from "../components/general/layout";
-import { graphql, Link as GatsbyLink } from "gatsby";
+import { graphql } from "gatsby";
 import gsap from "gsap";
 import { useSiteMetadata } from "../components/useSiteMetadata";
 import Masonry from "../components/home-page/masonry";

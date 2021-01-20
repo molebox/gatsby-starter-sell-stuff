@@ -20,6 +20,7 @@ const Masonry = ({ images }) => {
       let TL = gsap.timeline();
 
       TL.from(imagesRef.current, {
+        delay: 1,
         opacity: 0,
         duration: 3,
         ease: "power3",
@@ -42,7 +43,7 @@ const Masonry = ({ images }) => {
     >
       {images.map((image, index) => (
         <Box ref={addToRefs} key={index}>
-          {image.asset ? <Image fixed={image.asset.fixed} /> : null}
+          {image.asset ? <Image fixed={image.asset.fixed} loading="eager" /> : null}
         </Box>
       ))}
     </Box>

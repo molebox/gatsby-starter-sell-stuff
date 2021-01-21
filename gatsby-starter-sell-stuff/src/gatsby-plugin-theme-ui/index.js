@@ -217,4 +217,23 @@ export default {
     backgroundColor: "background",
     zIndex: 100,
   },
+  transitionUl: {
+    display: "flex",
+    position: "absolute",
+    zIndex: 99999,
+    height: "101vh",
+    width: "100%",
+    top: 0,
+    left: 0,
+    margin: 0,
+    padding: 0,
+    pointerEvents: "none",
+  },
+  transitionLi: {
+    transform: "scaleY(0)",
+    backgroundColor: "text",
+    width: "20%",
+    listStyleType: "none",
+    zIndex: 99999,
+  },
 };

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Grid, Flex, Box, jsx } from "theme-ui";
-import React, { useRef } from "react";
+import React from "react";
 import Footer from "./footer";
 import Header from "./header";
 import Main from "./main";
@@ -9,6 +9,8 @@ import { graphql, useStaticQuery } from "gatsby";
 import Cart from "../cart/cart";
 import TransitionLink from "gatsby-plugin-transition-link";
 import gsap from "gsap";
+
+// Page transition animation => https://lborges.dev/gsap-tl-gatsby/
 
 // Transition Link Component
 export const ListTLink = (props, ...rest) => (
@@ -26,13 +28,13 @@ export const ListTLink = (props, ...rest) => (
 // hidden object animation
 export function animateObjects() {
   let tl = gsap.timeline();
-  tl.to(".layoutLi", {
+  tl.to("li.layoutLi", {
     duration: 0.5,
     scaleY: 1,
     transformOrigin: "bottom left",
     stagger: 0.2,
   });
-  tl.to(".layoutLi", {
+  tl.to("li.layoutLi", {
     duration: 0.5,
     scaleY: 0,
     transformOrigin: "bottom left",
@@ -51,41 +53,31 @@ export function newContent(node) {
   });
 }
 
-// const LI = () => (
-//   <Box
-//     as="li"
-//     className="transition"
-//     sx={{
-//       transform: "scaleY(0)",
-//       background: "secondary",
-//       width: "20%",
-//       listStyleType: "none",
-//     }}
-//   ></Box>
-// );
+const LI = () => (
+  <Box
+    as="li"
+    className="layoutLi"
+    sx={{
+      variant: "transitionLi",
+    }}
+  ></Box>
+);
 
-// const TransitionGroup = () => (
-//   <Flex
-//     as="ul"
-//     className="transition"
-//     sx={{
-//       position: "absolute",
-//       zIndex: 10,
-//       height: "101vh",
-//       width: "100%",
-//       top: 0,
-//       left: 0,
-//       margin: 0,
-//       pointerEvents: "none",
-//     }}
-//   >
-//     <LI />
-//     <LI />
-//     <LI />
-//     <LI />
-//     <LI />
-//   </Flex>
-// );
+const TransitionGroup = () => (
+  <Flex
+    as="ul"
+    className="transition"
+    sx={{
+      variant: "transitionUl",
+    }}
+  >
+    <LI />
+    <LI />
+    <LI />
+    <LI />
+    <LI />
+  </Flex>
+);
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(query);
@@ -93,66 +85,7 @@ const Layout = ({ children }) => {
 
   return (
     <Grid variant="grids.layout">
-      {/* <TransitionGroup /> */}
-      <ul
-        className="transition"
-        sx={{
-          position: "absolute",
-          zIndex: 10,
-          height: "101vh",
-          width: "100%",
-          top: 0,
-          left: 0,
-          margin: 0,
-          pointerEvents: "none",
-        }}
-      >
-        <li
-          className="layoutLi"
-          sx={{
-            transform: "scaleY(0)",
-            background: "#fffffffff",
-            width: "20%",
-            listStyleType: "none",
-          }}
-        ></li>
-        <li
-          className="layoutLi"
-          sx={{
-            transform: "scaleY(0)",
-            background: "#ffffff",
-            width: "20%",
-            listStyleType: "none",
-          }}
-        ></li>
-        <li
-          className="layoutLi"
-          sx={{
-            transform: "scaleY(0)",
-            background: "#ffffff",
-            width: "20%",
-            listStyleType: "none",
-          }}
-        ></li>
-        <li
-          className="layoutLi"
-          sx={{
-            transform: "scaleY(0)",
-            background: "#ffffff",
-            width: "20%",
-            listStyleType: "none",
-          }}
-        ></li>
-        <li
-          className="layoutLi"
-          sx={{
-            transform: "scaleY(0)",
-            background: "#ffffff",
-            width: "20%",
-            listStyleType: "none",
-          }}
-        ></li>
-      </ul>
+      <TransitionGroup />
       <CategorySection categories={categories} />
       <Cart />
       <Header />

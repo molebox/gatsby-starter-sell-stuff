@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Flex, Box, Text, Grid, Link } from "theme-ui";
+import { Flex, Box, Text, Grid } from "theme-ui";
 import Image from "gatsby-image";
 import {
   ListTLink,
@@ -43,7 +43,7 @@ const Category = ({ data }) => {
               key={index}
               to={`/product/${slug.current}`}
               // sx={{ textDecoration: "none", m: 3 }}
-              // activeClass="active"
+              activeClass="active"
               exit={{
                 length: 0.6,
                 trigger: ({ exit, e, node }) => animateObjects(exit, node),

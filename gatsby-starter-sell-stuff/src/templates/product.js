@@ -20,7 +20,7 @@ const Product = ({ data }) => {
   const { addItem } = useShoppingCart();
 
   const formattedPrice = formatCurrencyString({
-    value: price,
+    value: price * 100,
     currency: currency,
     language: "en-US",
   });

@@ -43,7 +43,6 @@ const Category = ({ data }) => {
             <ListTLink
               key={index}
               to={`/product/${slug.current}`}
-              // sx={{ textDecoration: "none", m: 3 }}
               activeClass="active"
               exit={{
                 length: 0.6,
@@ -56,7 +55,6 @@ const Category = ({ data }) => {
               }}
             >
               <Flex
-                // ref={addToRefs}
                 key={index}
                 sx={{
                   flexDirection: "column",
@@ -64,10 +62,7 @@ const Category = ({ data }) => {
                   width: "100%",
                   justifyContent: "space-evenly",
                   p: 3,
-                  // border: "solid 2px",
-                  // borderColor: 'text',
                   backgroundColor: "secondary",
-                  // minHeight: 800
                 }}
               >
                 <Box

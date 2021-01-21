@@ -37,7 +37,7 @@ export default {
     productHeading: {
       variant: "text.body",
       fontSize: [5, 8],
-      // transform: [null, "rotate(270deg)", "rotate(270deg)"],
+      borderBottom: "solid 2px",
     },
     productHeadingCategory: {
       variant: "text.body",

@@ -20,6 +20,7 @@ export const ListTLink = (props, ...rest) => (
     exit={props.exit}
     trigger={props.trigger}
     {...rest}
+    style={{ textDecoration: "none", color: "#212529", cursor: "crosshair" }}
   >
     {props.children}
   </TransitionLink>

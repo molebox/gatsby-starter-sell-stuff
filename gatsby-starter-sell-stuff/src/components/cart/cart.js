@@ -15,6 +15,8 @@ const Cart = () => {
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
 
+  console.log({ cartDetails });
+
   useEffect(() => {
     // If the route has changed it means the user has clicked on a category and we want to wait half a second then close the pop out
     return globalHistory.listen(({ action }) => {
@@ -26,7 +28,7 @@ const Cart = () => {
         return () => clearTimeout(timer);
       }
     });
-  }, [state.navOpen, dispatch]);
+  }, [state.cartOpen, dispatch]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -79,15 +81,15 @@ const Cart = () => {
           return (
             <Flex>
               <Box>
-                <img src={item.image} />
+                <img src={item?.image} />
               </Box>
               <Flex
                 sx={{
                   flexDirection: "column",
                 }}
               >
-                {item.name}
-                {item.description}
+                {item?.name}
+                {/* {item?.description} */}
                 Qty: 0
               </Flex>
               <Flex
@@ -95,8 +97,8 @@ const Cart = () => {
                   flexDirection: "column",
                 }}
               >
-                <button onClick={removeItem(item.sku)}>x</button>
-                {item.formattedValue}
+                <button onClick={removeItem(item.id)}>x</button>
+                {/* {item?.formattedValue} */}
               </Flex>
             </Flex>
           );

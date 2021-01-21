@@ -1,32 +1,68 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { graphql } from "gatsby";
-import { Box, Text, Flex } from "theme-ui";
+import { Box, Text, Flex, Button } from "theme-ui";
 import Image from "gatsby-image";
 import ProductLayout from "../components/product/product-layout";
+import { DispatchContext } from "../components/context";
+import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
 
 const Product = ({ data }) => {
-  const { title, price, description, mainImage, images } = data.product;
-  const [selectedImage, setSelectedImage] = useState(images[0].asset.fluid);
+  const {
+    title,
+    productId,
+    price,
+    currency,
+    description,
+    mainImage,
+    images,
+  } = data.product;
+  const dispatch = useContext(DispatchContext);
+  const { addItem } = useShoppingCart();
+
+  const formattedPrice = formatCurrencyString({
+    value: price,
+    currency: currency,
+    language: "en-US",
+  });
+
+  const addToCart = () => {
+    dispatch({ type: "cartOpen", payload: true });
+    addItem(
+      {
+        name: title,
+        // description: description.en,
+        id: productId.current,
+        price: price * 100,
+        currency,
+        image: images[0].asset.url,
+      },
+      1
+    );
+  };
+
   return (
     <Flex
       sx={{
         flexDirection: ["column", "row"],
         overflowY: "hidden",
+        height: "100%",
         height: "calc(100% + 80px)",
         position: "relative",
       }}
     >
       <Box
+        as="section"
         sx={{
           width: ["100%", "40%"],
         }}
       >
         <Box sx={{ width: "auto" }}>
-          <Image fluid={mainImage.asset.fluid} loading="eager" />
+          <Image fluid={mainImage.asset.fluid} loading="lazy" />
         </Box>
       </Box>
 
       <Flex
+        as="section"
         sx={{
           width: ["100%", "60%"],
           alignItems: "center",
@@ -46,7 +82,7 @@ const Product = ({ data }) => {
             p: 3,
           }}
         >
-          <Image fluid={images[0].asset.fluid} loading="eager" />
+          <Image fluid={images[0].asset.fluid} loading="lazy" />
         </Box>
 
         <Box>
@@ -68,7 +104,7 @@ const Product = ({ data }) => {
             }}
           >
             <Text as="h1" variant="productHeading" sx={{ color: "background" }}>
-              ${price}
+              {formattedPrice}
             </Text>
           </Box>
           <Box
@@ -77,84 +113,25 @@ const Product = ({ data }) => {
               p: 3,
             }}
           >
-            <Text
-              as="h1"
-              variant="productHeading"
-              sx={{ color: "background", textTransform: "uppercase" }}
+            <Button
+              sx={{
+                backgroundColor: "text",
+                cursor: "crosshair",
+              }}
+              onClick={addToCart}
             >
-              buy
-            </Text>
+              <Text
+                as="h1"
+                variant="productHeading"
+                sx={{ color: "background", textTransform: "uppercase" }}
+              >
+                buy
+              </Text>
+            </Button>
           </Box>
         </Flex>
       </Flex>
     </Flex>
-    // <ProductLayout>
-    //   <Box
-    //     as="section"
-    //     sx={{ gridRow: 1, gridColumn: "2 / 6", textAlign: "center" }}
-    //   >
-    //     <Text as="h1" variant="productHeading">
-    //       {title}
-    //     </Text>
-    //   </Box>
-
-    //   <Flex sx={{ gridRow: [3, 2], gridColumn: ['2 / 6', 2], flexDirection: ['row', 'column'], justifyContent: 'space-evenly' }}>
-    //     {images.map((image, index) => (
-    //       <Box
-    //         key={index}
-    //         sx={{ width: [100, 150], height: "auto", backgroundColor: "text", p: 3, ":hover": {cursor: 'crosshair'} }}
-    //         onClick={() => setSelectedImage(image.asset.fluid)}
-    //       >
-    //         <Image fluid={image.asset.fluid} loading="eager" />
-    //       </Box>
-    //     ))}
-    //   </Flex>
-
-    //   <Flex
-    //     as="section"
-    //     sx={{
-    //       gridRow: 2,
-    //       gridColumn: "3 / 6",
-    //       justifyContent: "space-evenly",
-    //       alignItems: "center",
-    //       p: 2,
-    //       flexDirection: "column",
-    //     }}
-    //   >
-    //     <Box sx={{ width: [200, 400], height: "auto", backgroundColor: "text", p: 3 }}>
-    //       <Image fluid={selectedImage} loading="eager" />
-    //     </Box>
-    //     <Box sx={{ width: "100%" }}>
-    //       <Text as="p" variant="styles.p">
-    //         {description.en}
-    //       </Text>
-    //     </Box>
-    //   </Flex>
-    //   <Box
-    //     as="aside"
-    //     sx={{
-    //       gridRow: 3,
-    //       gridColumn: 1,
-    //       textAlign: "center",
-    //     }}
-    //   >
-    //     <Text as="h1" variant="productHeading">
-    //       ${price}
-    //     </Text>
-    //   </Box>
-    //   <Box
-    //     as="aside"
-    //     sx={{
-    //       gridRow: 3,
-    //       gridColumn: [5],
-    //       textAlign: "center",
-    //     }}
-    //   >
-    //     <Text as="h1" variant="productHeading">
-    //       BUY
-    //     </Text>
-    //   </Box>
-    // </ProductLayout>
   );
 };
 
@@ -163,9 +140,12 @@ export default Product;
 export const query = graphql`
   query ProductTemplateQuery($id: String!) {
     product: sanityProduct(id: { eq: $id }) {
-      _id
+      productId {
+        current
+      }
       title
       price
+      currency
       description {
         en
       }
@@ -178,6 +158,7 @@ export const query = graphql`
       }
       images {
         asset {
+          url
           fluid {
             ...GatsbySanityImageFluid
           }

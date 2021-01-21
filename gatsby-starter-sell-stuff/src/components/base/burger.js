@@ -13,6 +13,9 @@ const Burger = () => {
       toggleButton={() =>
         dispatch({ type: "navOpen", payload: !state.navOpen })
       }
+      buttonStyle={{
+        cursor: "crosshair",
+      }}
     />
   );
 };

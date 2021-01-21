@@ -89,7 +89,7 @@ export default {
     },
     p: {
       variant: "text.body",
-      fontSize: 4,
+      fontSize: [3, 4],
     },
     footer: {
       gridArea: "footer",
@@ -182,10 +182,15 @@ export default {
     },
     product: {
       gap: 0,
-      gridTemplateColumns: ["auto", "repeat(5, 1fr)"],
-      gridTemplateRows: ["auto", "5% 10% 1fr 1fr"],
+      gridTemplateColumns: ["auto", "repeat(6, 1fr)"],
+      gridTemplateRows: [
+        "minmax(auto, 100px)",
+        "minmax(50px, 100px) 1fr 1fr minmax(auto, 100px)",
+      ],
       height: "100vh",
       width: "100%",
+      p: 3,
+      overflowY: "hidden",
     },
   },
   buttons: {

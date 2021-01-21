@@ -45,6 +45,8 @@ export default ({ data }) => {
           alignItems: "center",
           justifyContent: "center",
           height: "100%",
+          maxWidth: 1440,
+          m: "0 auto",
         }}
       >
         <Box sx={{ my: 5 }}>

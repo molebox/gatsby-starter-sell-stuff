@@ -19,7 +19,8 @@ const Category = ({ data }) => {
         flexDirection: "column",
         alignItems: "center",
         height: "100%",
-        m: 2,
+        maxWidth: 1440,
+        m: "0 auto",
       }}
     >
       <Text as="h1" variant="categoryHeading">

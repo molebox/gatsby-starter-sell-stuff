@@ -5,6 +5,7 @@ import Image from "gatsby-image";
 import ProductLayout from "../components/product/product-layout";
 import { DispatchContext } from "../components/context";
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
+import RelatedProducts from "../components/product/related-products";
 
 const Product = ({ data }) => {
   const {
@@ -15,8 +16,10 @@ const Product = ({ data }) => {
     description,
     mainImage,
     images,
+    categories,
   } = data.product;
   const dispatch = useContext(DispatchContext);
+  const [selectedImage, setSelectedImage] = useState(images[0].asset.fluid);
   const { addItem } = useShoppingCart();
 
   const formattedPrice = formatCurrencyString({
@@ -46,7 +49,7 @@ const Product = ({ data }) => {
         flexDirection: ["column", "row"],
         overflowY: "hidden",
         height: "100%",
-        height: "calc(100% + 80px)",
+        // height: "calc(100% + 80px)",
         position: "relative",
       }}
     >
@@ -68,22 +71,60 @@ const Product = ({ data }) => {
           alignItems: "center",
           flexDirection: "column",
           justifyContent: "space-evenly",
+          alignSelf: "start",
           p: 3,
+          gap: 1,
         }}
       >
         <Text as="h1" variant="productHeading" sx={{ my: 2 }}>
           {title}
         </Text>
-        <Box
+
+        <Flex
           sx={{
-            width: [200, 400],
-            height: "auto",
-            backgroundColor: "text",
-            p: 3,
+            gap: 1,
+            justifyContent: ["space-around"],
+            alignItems: "center",
+            width: [300, 600, 800],
+            flexDirection: ["column", "row"],
           }}
         >
-          <Image fluid={images[0].asset.fluid} loading="lazy" />
-        </Box>
+          <Flex
+            sx={{
+              flexDirection: ["row", "column"],
+              justifyContent: "space-evenly",
+              gap: 1,
+              my: [3, null],
+            }}
+          >
+            {images.map((image, index) => (
+              <Box
+                sx={{
+                  width: [100, 200],
+                  height: "auto",
+                  backgroundColor: "text",
+                  p: 2,
+                  cursor: "crosshair",
+                }}
+                key={index}
+                onClick={() => setSelectedImage(image.asset.fluid)}
+              >
+                <Image fluid={image.asset.fluid} loading="lazy" />
+              </Box>
+            ))}
+          </Flex>
+          <Box
+            sx={{
+              width: [200, 400],
+              height: "auto",
+              backgroundColor: "text",
+              p: 3,
+              boxShadow: "7px 8px 2px 0px hsla(0,0%,0%,0.2)",
+            }}
+          >
+            <Image fluid={selectedImage} loading="lazy" />
+          </Box>
+        </Flex>
 
         <Box>
           <Text as="p" variant="styles.p" sx={{ maxWidth: 800, my: 3 }}>
@@ -97,20 +138,20 @@ const Product = ({ data }) => {
             width: "100%",
           }}
         >
-          <Box
+          <Flex
             sx={{
-              backgroundColor: "text",
-              p: 3,
+              alignItems: "flex-end",
             }}
           >
-            <Text as="h1" variant="productHeading" sx={{ color: "background" }}>
+            <Text as="h1" variant="productHeading" sx={{ color: "text" }}>
               {formattedPrice}
             </Text>
-          </Box>
+          </Flex>
           <Box
             sx={{
               backgroundColor: "text",
               p: 3,
+              boxShadow: "7px 8px 2px 0px hsla(0,0%,0%,0.2)",
             }}
           >
             <Button
@@ -130,6 +171,10 @@ const Product = ({ data }) => {
             </Button>
           </Box>
         </Flex>
+        <Text as="h2" variant="productSubHeading" sx={{ mt: 5 }}>
+          You might also like
+        </Text>
+        <RelatedProducts products={categories[0].products} />
       </Flex>
     </Flex>
   );
@@ -161,6 +206,22 @@ export const query = graphql`
           url
           fluid {
             ...GatsbySanityImageFluid
+          }
+        }
+      }
+      categories {
+        products {
+          title
+          slug {
+            current
+          }
+          price
+          images {
+            asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+            }
           }
         }
       }

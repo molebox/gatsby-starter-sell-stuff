@@ -15,8 +15,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
-    "@fontsource/abel": "^4.1.0",
-    "@fontsource/bodoni-moda": "^4.1.1",
+    "@fontsource/montserrat": "^4.1.0",
     "@sanity/client": "^2.1.4",
     "@stripe/stripe-js": "^1.11.0",
     "gatsby": "^2.30.1",

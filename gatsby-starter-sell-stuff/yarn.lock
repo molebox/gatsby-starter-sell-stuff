@@ -1116,15 +1116,10 @@
     ts-node "^9"
     tslib "^2"
 
-"@fontsource/abel@^4.1.0":
+"@fontsource/montserrat@^4.1.0":
   version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/abel/-/abel-4.1.0.tgz#659c2fc71b5e66053a7d9c2c8c057b98560beb40"
-  integrity sha512-kWCYgufHdBrf+zIyaIy7sccR4IqYQF/YACDAIH+vfvr7MMOwoNxQFrBZ2M2osDDjeghOlpkr0gqCxPsFyZpzOw==
-
-"@fontsource/bodoni-moda@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/bodoni-moda/-/bodoni-moda-4.1.1.tgz#c25514c8e6a63abe9a055f569ba58fad65501b5b"
-  integrity sha512-pF+3w/udtnx7jODSDgdoM79fvBZntBF6zoDT2sBpSXHdqtmTipWQDp03PpFEK1+zLC1L7EFv1CXuV7G9Z+egJA==
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.1.0.tgz#a5f4d334b3702699af88c5e6c5c6972095c2c947"
+  integrity sha512-Dqd+sGHfKg3TGlNs7f8VFQLjSgLcu6ZzlDS10rVDIs/YZVCWt9BMgdLF3n19QQt8HsuUteK+YOhswGL23W3Lgw==
 
 "@graphql-tools/batch-execute@^7.0.0":
   version "7.0.0"

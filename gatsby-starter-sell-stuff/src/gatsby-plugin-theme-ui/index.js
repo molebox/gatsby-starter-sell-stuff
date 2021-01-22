@@ -2,8 +2,8 @@ export default {
   breakpoints: ["40em", "52em", "64em"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: "Abel",
-    heading: "Bodoni Moda, serif",
+    body: "Montserrat",
+    heading: "Montserrat",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96, 110],
   fontWeights: {
@@ -36,12 +36,22 @@ export default {
     },
     productHeading: {
       variant: "text.body",
-      fontSize: [5, 8],
+      fontSize: [5, 6],
+      borderBottom: "solid 2px",
+    },
+    productSubHeading: {
+      variant: "text.body",
+      fontSize: [3, 4],
       borderBottom: "solid 2px",
     },
     productHeadingCategory: {
       variant: "text.body",
       fontSize: [3, 6],
+      // transform: [null, "rotate(270deg)", "rotate(270deg)"],
+    },
+    relatedProductHeadingCategory: {
+      variant: "text.body",
+      fontSize: [1, 3],
       // transform: [null, "rotate(270deg)", "rotate(270deg)"],
     },
     categoryHeading: {
@@ -65,7 +75,7 @@ export default {
     },
     h1: {
       variant: "text.heading",
-      fontSize: [4, 7],
+      fontSize: [4, 6],
     },
     h2: {
       variant: "text.heading",
@@ -89,7 +99,7 @@ export default {
     },
     p: {
       variant: "text.body",
-      fontSize: [3, 4],
+      fontSize: 2,
     },
     footer: {
       gridArea: "footer",

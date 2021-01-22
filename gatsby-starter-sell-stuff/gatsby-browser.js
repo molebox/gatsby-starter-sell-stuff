@@ -1,5 +1,5 @@
 import { wrapRootElement as wrap } from './root-wrap';
-import "@fontsource/bodoni-moda";
-import "@fontsource/abel";
+import "@fontsource/montserrat"
+import "@fontsource/montserrat/500.css"
 
 export const wrapRootElement = wrap

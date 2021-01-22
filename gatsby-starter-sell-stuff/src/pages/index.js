@@ -11,6 +11,7 @@ export default ({ data }) => {
   const { title, description } = useSiteMetadata();
   const images = data.sanityHomePage.images;
   const hero = data.sanityHomePage.sectionOne.imageOne;
+  const heroTwo = data.sanityHomePage.sectionOne.imageTwo;
   const featuredProducts = data.sanityHomePage.featuredProducts;
 
   return (
@@ -44,7 +45,10 @@ export default ({ data }) => {
         <Showcase products={featuredProducts} />
         <Divider />
         <Masonry images={images} />
-        <Divider />
+        <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
+          <Image fluid={heroTwo.asset.fluid} loading="lazy" />
+        </Box>
+
       </Flex>
     </>
   );
@@ -55,6 +59,13 @@ export const query = graphql`
     sanityHomePage {
       sectionOne {
         imageOne {
+          asset {
+            fluid(maxWidth: 1920) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        imageTwo {
           asset {
             fluid(maxWidth: 1920) {
               ...GatsbySanityImageFluid

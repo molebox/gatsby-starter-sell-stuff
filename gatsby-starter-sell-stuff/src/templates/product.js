@@ -5,7 +5,7 @@ import Image from "gatsby-image";
 import ProductLayout from "../components/product/product-layout";
 import { DispatchContext } from "../components/context";
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
-import RelatedProducts from "../components/product/related-products";
+import RelatedProducts from "../components/product/showcase";
 
 const Product = ({ data }) => {
   const {
@@ -55,7 +55,7 @@ const Product = ({ data }) => {
       <Box
         as="section"
         sx={{
-          width: ["100%", "40%"],
+          width: ["100%", "50%"],
         }}
       >
         <Box sx={{ width: "auto" }}>
@@ -66,7 +66,7 @@ const Product = ({ data }) => {
       <Flex
         as="section"
         sx={{
-          width: ["100%", "60%"],
+          width: ["100%", "50%"],
           alignItems: "center",
           flexDirection: "column",
           justifyContent: "space-evenly",

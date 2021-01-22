@@ -37,49 +37,6 @@ const CategorySection = ({ categories }) => {
     >
       <Flex
         sx={{
-          position: "absolute",
-          top: "50%",
-          left: "-110px",
-          transform: "rotate(270deg)",
-          justifyContent: "space-evenly",
-        }}
-      >
-        <Link
-          as={GatsbyLink}
-          to="/"
-          activeClassName="active"
-          variant="linkEffect"
-          sx={{
-            fontSize: [3, 4],
-          }}
-        >
-          Home
-        </Link>
-        <Link
-          as={GatsbyLink}
-          to="/"
-          activeClassName="active"
-          variant="linkEffect"
-          sx={{
-            fontSize: [3, 4],
-          }}
-        >
-          About
-        </Link>
-        <Link
-          as={GatsbyLink}
-          to="/"
-          activeClassName="active"
-          variant="linkEffect"
-          sx={{
-            fontSize: [3, 4],
-          }}
-        >
-          Contact
-        </Link>
-      </Flex>
-      <Flex
-        sx={{
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "start",

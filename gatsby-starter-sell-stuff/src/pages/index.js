@@ -1,33 +1,17 @@
-import React, { useRef, useEffect } from "react";
-import { Flex, Text, Box } from "theme-ui";
+import React from "react";
+import { Flex, Box, Text, Divider } from "theme-ui";
 import SEO from "react-seo-component";
 import { graphql } from "gatsby";
-import gsap from "gsap";
 import Image from "gatsby-image";
 import { useSiteMetadata } from "../components/useSiteMetadata";
 import Masonry from "../components/home-page/masonry";
+import Showcase from "../components/product/showcase";
 
 export default ({ data }) => {
   const { title, description } = useSiteMetadata();
-  const titleRef = useRef();
   const images = data.sanityHomePage.images;
   const hero = data.sanityHomePage.sectionOne.imageOne;
-
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      gsap.from(
-        titleRef.current,
-        {
-          delay: 1,
-          duration: 1.5,
-          y: 30,
-          ease: "power4",
-          opacity: 0,
-        },
-        "text"
-      );
-    }
-  }, []);
+  const featuredProducts = data.sanityHomePage.featuredProducts;
 
   return (
     <>
@@ -52,12 +36,15 @@ export default ({ data }) => {
         }}
       >
         <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
-          {/* <Text ref={titleRef} as="h1" variant="styles.h1">
-            {title}
-          </Text> */}
-          <Image fluid={hero.asset.fluid} />
+          <Image fluid={hero.asset.fluid} loading="lazy" />
         </Box>
+        <Text as="h2" variant="styles.h3">
+          Featured Products
+        </Text>
+        <Showcase products={featuredProducts} />
+        <Divider />
         <Masonry images={images} />
+        <Divider />
       </Flex>
     </>
   );
@@ -70,6 +57,20 @@ export const query = graphql`
         imageOne {
           asset {
             fluid(maxWidth: 1920) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+      featuredProducts {
+        title
+        slug {
+          current
+        }
+        price
+        images {
+          asset {
+            fluid {
               ...GatsbySanityImageFluid
             }
           }

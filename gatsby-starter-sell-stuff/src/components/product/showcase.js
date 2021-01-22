@@ -1,14 +1,14 @@
 import React from "react";
 import { Flex, Box, Text } from "theme-ui";
 import Image from "gatsby-image";
-import { ListTLink, animateObjects, newContent } from "./../base/layout";
+import { ListTLink, animateObjects, newContent } from "../base/layout";
 
-const RelatedProducts = ({ products }) => {
+const Showcase = ({ products }) => {
   return (
     <Flex
       sx={{
-        gap: 1,
-        justifyContent: "space-evenly",
+        gap: 2,
+        justifyContent: "center",
         flexWrap: "wrap",
         width: "100%",
         my: 4,
@@ -62,4 +62,4 @@ const RelatedProducts = ({ products }) => {
   );
 };
 
-export default RelatedProducts;
+export default Showcase;

@@ -114,6 +114,14 @@ export default {
     spinner: {
       color: "text",
     },
+    hr: {
+      height: 2,
+      background: "text",
+      backgroundImage:
+        "linear-gradient(to right, rgba(0, 0, 0, 0), rgb(237, 234, 227), rgba(0, 0, 0, 0))",
+      width: "100%",
+      my: 5,
+    },
   },
   navLink: {
     variant: "text.heading",

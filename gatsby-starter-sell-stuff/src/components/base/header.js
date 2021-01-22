@@ -49,7 +49,8 @@ const Header = () => {
         position: "sticky",
         top: 0,
         height: "80px",
-        opacity: 0.2,
+        opacity: 1,
+        backgroundColor: "background",
       }}
     >
       <Burger />

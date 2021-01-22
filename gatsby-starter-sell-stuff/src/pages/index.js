@@ -3,6 +3,7 @@ import { Flex, Text, Box } from "theme-ui";
 import SEO from "react-seo-component";
 import { graphql } from "gatsby";
 import gsap from "gsap";
+import Image from "gatsby-image";
 import { useSiteMetadata } from "../components/useSiteMetadata";
 import Masonry from "../components/home-page/masonry";
 
@@ -10,6 +11,7 @@ export default ({ data }) => {
   const { title, description } = useSiteMetadata();
   const titleRef = useRef();
   const images = data.sanityHomePage.images;
+  const hero = data.sanityHomePage.sectionOne.imageOne;
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -49,10 +51,11 @@ export default ({ data }) => {
           m: "0 auto",
         }}
       >
-        <Box sx={{ my: 5 }}>
-          <Text ref={titleRef} as="h1" variant="styles.h1">
+        <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
+          {/* <Text ref={titleRef} as="h1" variant="styles.h1">
             {title}
-          </Text>
+          </Text> */}
+          <Image fluid={hero.asset.fluid} />
         </Box>
         <Masonry images={images} />
       </Flex>
@@ -63,6 +66,15 @@ export default ({ data }) => {
 export const query = graphql`
   query IndexQuery {
     sanityHomePage {
+      sectionOne {
+        imageOne {
+          asset {
+            fluid(maxWidth: 1920) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
       images {
         asset {
           fixed(width: 300) {

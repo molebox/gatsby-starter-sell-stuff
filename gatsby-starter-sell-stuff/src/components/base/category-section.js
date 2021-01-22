@@ -37,12 +37,58 @@ const CategorySection = ({ categories }) => {
     >
       <Flex
         sx={{
+          position: "absolute",
+          top: "50%",
+          left: "-110px",
+          transform: "rotate(270deg)",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Link
+          as={GatsbyLink}
+          to="/"
+          activeClassName="active"
+          variant="linkEffect"
+          sx={{
+            fontSize: [3, 4],
+          }}
+        >
+          Home
+        </Link>
+        <Link
+          as={GatsbyLink}
+          to="/"
+          activeClassName="active"
+          variant="linkEffect"
+          sx={{
+            fontSize: [3, 4],
+          }}
+        >
+          About
+        </Link>
+        <Link
+          as={GatsbyLink}
+          to="/"
+          activeClassName="active"
+          variant="linkEffect"
+          sx={{
+            fontSize: [3, 4],
+          }}
+        >
+          Contact
+        </Link>
+      </Flex>
+      <Flex
+        sx={{
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "start",
           maxWidth: 1440,
         }}
       >
+        <Text as="h1" variant="styles.h1" sx={{ my: 3 }}>
+          Categories
+        </Text>
         {categories.map((category, index) => {
           const numberOfProducts = category.products.length
             ? category.products.length
@@ -50,26 +96,24 @@ const CategorySection = ({ categories }) => {
           return (
             <Flex
               key={index}
-              sx={{ alignItems: "center", width: "max-content" }}
+              sx={{ alignItems: "start", width: "max-content" }}
             >
-              <Box variant="linkEffect">
-                <Link
-                  as={GatsbyLink}
-                  to={`/category/${category.slug.current}`}
-                  activeClassName="active"
-                  variant="navLink"
-                  sx={{
-                    fontSize: [6, 8],
-                  }}
-                >
-                  {category.title}
-                </Link>
-              </Box>
+              <Link
+                as={GatsbyLink}
+                to={`/category/${category.slug.current}`}
+                activeClassName="active"
+                variant="linkEffect"
+                sx={{
+                  fontSize: [5, 6],
+                }}
+              >
+                {category.title}
+              </Link>
               <Text
                 as="p"
                 variant="styles.h2"
                 sx={{
-                  ml: 3,
+                  m: 3,
                 }}
               >
                 - {numberOfProducts}

@@ -49,7 +49,6 @@ const Product = ({ data }) => {
         flexDirection: ["column", "row"],
         overflowY: "hidden",
         height: "100%",
-        // height: "calc(100% + 80px)",
         position: "relative",
       }}
     >
@@ -76,7 +75,7 @@ const Product = ({ data }) => {
           gap: 1,
         }}
       >
-        <Text as="h1" variant="productHeading" sx={{ my: 2 }}>
+        <Text as="h1" variant="productHeading" sx={{ my: 3 }}>
           {title}
         </Text>
 

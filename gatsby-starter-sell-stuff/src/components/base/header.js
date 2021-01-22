@@ -1,11 +1,14 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { Flex, Link } from "theme-ui";
+import { Flex, Link, Text } from "theme-ui";
 import { DispatchContext, StateContext } from "../context";
 import Burger from "./burger";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSiteMetadata } from "./../useSiteMetadata";
+import { animateObjects, ListTLink, newContent } from "./layout";
 
 const Header = () => {
+  const { title } = useSiteMetadata();
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
   const headerRef = useRef(null);
@@ -50,11 +53,28 @@ const Header = () => {
       }}
     >
       <Burger />
+      <ListTLink
+        to="/"
+        activeClass="active"
+        exit={{
+          length: 0.6,
+          trigger: ({ exit, e, node }) => animateObjects(exit, node),
+        }}
+        entry={{
+          delay: 0.5,
+          length: 0.6,
+          trigger: ({ entry, node }) => newContent(node),
+        }}
+      >
+        <Text as="h1" variant="siteTitle">
+          {title}
+        </Text>
+      </ListTLink>
       <Link
         sx={{
           fontFamily: "body",
           textTransform: "uppercase",
-          fontSize: [3, 5],
+          fontSize: [2, 4],
         }}
         activeClassName="active"
         variant="navLink"

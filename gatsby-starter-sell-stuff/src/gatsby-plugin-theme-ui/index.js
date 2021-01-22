@@ -63,6 +63,11 @@ export default {
     categoryPrice: {
       fontSize: [3, 5],
     },
+    siteTitle: {
+      variant: "text.heading",
+      fontSize: [2, 4],
+      color: "text",
+    },
   },
   sizes: {
     sidebar: [80, "100%", "100%"],
@@ -131,6 +136,7 @@ export default {
     textDecoration: "none",
     fontSize: 3,
     p: 2,
+    my: 2,
     color: "inherit",
     ":active": {
       color: "primary",

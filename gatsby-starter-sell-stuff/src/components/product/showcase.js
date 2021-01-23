@@ -1,12 +1,53 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Flex, Box, Text } from "theme-ui";
 import Image from "gatsby-image";
 import { ListTLink, animateObjects, newContent } from "../base/layout";
 import { formatCurrencyString } from "use-shopping-cart";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Showcase = ({ products, imageSize }) => {
-  console.log({ products });
+  const showcaseRef = useRef();
+  showcaseRef.current = [];
 
+  const getRandomInteger = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
+
+  const addToRefs = (el) => {
+    if (el && !showcaseRef.current.includes(el)) {
+      showcaseRef.current.push(el);
+    }
+  };
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      let TL = gsap.timeline();
+
+      showcaseRef.current.forEach((showcase, index) => {
+        gsap.fromTo(
+          showcase,
+          {
+            autoAlpha: 0,
+          },
+          {
+            duration: 1,
+            autoAlpha: 1,
+            ease: "none",
+            stagger: {
+              amount: 1.5,
+            },
+            scrollTrigger: {
+              id: `section-${index + 1}`,
+              trigger: showcase,
+              start: "center center+=100",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    }
+  }, []);
   return (
     <Flex
       sx={{
@@ -18,52 +59,54 @@ const Showcase = ({ products, imageSize }) => {
       }}
     >
       {products.map((product, index) => (
-        <ListTLink
-          key={index}
-          to={`/product/${product.slug.current}`}
-          activeClass="active"
-          exit={{
-            length: 0.6,
-            trigger: ({ exit, e, node }) => animateObjects(exit, node),
-          }}
-          entry={{
-            delay: 0.5,
-            length: 0.6,
-            trigger: ({ entry, node }) => newContent(node),
-          }}
-        >
-          <Flex
+        <Box ref={addToRefs}>
+          <ListTLink
             key={index}
-            sx={{
-              flexDirection: "column",
-              alignItems: "center",
-              width: "100%",
-              justifyContent: "space-evenly",
-              p: 3,
-              backgroundColor: "secondary",
+            to={`/product/${product.slug.current}`}
+            activeClass="active"
+            exit={{
+              length: 0.6,
+              trigger: ({ exit, e, node }) => animateObjects(exit, node),
+            }}
+            entry={{
+              delay: 0.5,
+              length: 0.6,
+              trigger: ({ entry, node }) => newContent(node),
             }}
           >
-            <Box
+            <Flex
+              key={index}
               sx={{
-                width: imageSize,
-                height: "auto",
-                p: 2,
+                flexDirection: "column",
+                alignItems: "center",
+                width: "100%",
+                justifyContent: "space-evenly",
+                p: 3,
+                backgroundColor: "secondary",
               }}
             >
-              <Image fluid={product.images[0].asset.fluid} />
-            </Box>
-            <Text as="p" variant="relatedProductHeadingCategory">
-              {product.title}
-            </Text>
-            <Text as="p" variant="categoryPrice">
-              {formatCurrencyString({
-                value: product.price * 100,
-                currency: product.currency,
-                language: "en-US",
-              })}
-            </Text>
-          </Flex>
-        </ListTLink>
+              <Box
+                sx={{
+                  width: imageSize,
+                  height: "auto",
+                  p: 2,
+                }}
+              >
+                <Image fluid={product.images[0].asset.fluid} />
+              </Box>
+              <Text as="p" variant="relatedProductHeadingCategory">
+                {product.title}
+              </Text>
+              <Text as="p" variant="categoryPrice">
+                {formatCurrencyString({
+                  value: product.price * 100,
+                  currency: product.currency,
+                  language: "en-US",
+                })}
+              </Text>
+            </Flex>
+          </ListTLink>
+        </Box>
       ))}
     </Flex>
   );

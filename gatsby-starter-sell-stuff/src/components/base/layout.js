@@ -13,7 +13,7 @@ import gsap from "gsap";
 // Page transition animation => https://lborges.dev/gsap-tl-gatsby/
 
 // Transition Link Component
-export const ListTLink = (props, ...rest) => (
+export const ListTLink = (props, ref, ...rest) => (
   <TransitionLink
     to={props.to}
     entry={props.entry}

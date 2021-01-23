@@ -16,9 +16,9 @@ const Footer = () => {
         variant: "styles.footer",
       }}
     >
-      <Link as={GatsbyLink} to="/" sx={{ variant: "styles.navlink", p: 2 }}>
+      {/* <Link as={GatsbyLink} to="/" sx={{ variant: "styles.navlink", p: 2 }}>
         Home
-      </Link>
+      </Link> */}
       {/* <Link as={GatsbyLink} to="/" sx={{ variant: "styles.navlink", p: 2 }}>
         Blog
       </Link>

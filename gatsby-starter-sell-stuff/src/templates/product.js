@@ -29,7 +29,6 @@ const Product = ({ data }) => {
   });
 
   const addToCart = () => {
-    dispatch({ type: "cartOpen", payload: true });
     addItem(
       {
         name: title,
@@ -41,6 +40,7 @@ const Product = ({ data }) => {
       },
       1
     );
+    dispatch({ type: "cartOpen", payload: true });
   };
 
   return (

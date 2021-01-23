@@ -127,7 +127,6 @@ export default {
     variant: "text.heading",
     fontWeight: "body",
     textDecoration: "none",
-    // textTransform: "uppercase",
     fontSize: [4, 6],
     p: 2,
     color: "inherit",
@@ -168,19 +167,9 @@ export default {
     },
   },
   images: {
-    mainProduct: {},
-    heroOne: {
-      width: [300, 800],
+    productCartImage: {
+      width: 200,
       height: "auto",
-      my: 3,
-    },
-    heroTwo: {
-      width: [200, 400],
-      height: "auto",
-      filter: `drop-shadow(2px 2px 0 #DE3C4B)
-      drop-shadow(-2px 2px 0 #DE3C4B)
-      drop-shadow(2px -2px 0 #DE3C4B)
-      drop-shadow(-2px -2px 0 #DE3C4B)`,
     },
   },
   grids: {
@@ -222,12 +211,19 @@ export default {
       background: "transparent",
       cursor: "crosshair",
     },
-    close: {
-      position: "absolute",
-      top: "3%",
-      left: "1.5%",
-      ":hover": {
+    checkout: {
+      width: "100%",
+      p: 2,
+      backgroundColor: "background",
+      color: "text",
+      variant: "text.heading",
+      mx: 3,
+      height: "50px",
+      "&:hover": {
+        backgroundColor: "text",
+        color: "background",
         cursor: "crosshair",
+        border: "solid 1px",
       },
     },
   },
@@ -264,5 +260,18 @@ export default {
     width: "20%",
     listStyleType: "none",
     zIndex: 99999,
+  },
+  badges: {
+    circle: {
+      color: "background",
+      bg: "text",
+      borderRadius: "50%",
+      height: "20px",
+      width: "20px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontWeight: 700,
+    },
   },
 };

@@ -1,17 +1,19 @@
 import React, { useContext, useRef, useEffect } from "react";
-import { Flex, Link, Text } from "theme-ui";
+import { Flex, Link, Text, Badge } from "theme-ui";
 import { DispatchContext, StateContext } from "../context";
 import Burger from "./burger";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSiteMetadata } from "./../useSiteMetadata";
 import { animateObjects, ListTLink, newContent } from "./layout";
+import { useShoppingCart } from "use-shopping-cart";
 
 const Header = () => {
   const { title } = useSiteMetadata();
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
   const headerRef = useRef(null);
+  const { cartCount } = useShoppingCart();
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -71,18 +73,26 @@ const Header = () => {
           {title}
         </Text>
       </ListTLink>
-      <Link
-        sx={{
-          fontFamily: "body",
-          textTransform: "uppercase",
-          fontSize: [2, 4],
-        }}
-        activeClassName="active"
-        variant="navLink"
-        onClick={() => dispatch({ type: "cartOpen", payload: !state.cartOpen })}
-      >
-        cart
-      </Link>
+      <Flex>
+        <Link
+          sx={{
+            fontFamily: "body",
+            fontSize: [2, 4],
+          }}
+          activeClassName="active"
+          variant="navLink"
+          onClick={() =>
+            dispatch({ type: "cartOpen", payload: !state.cartOpen })
+          }
+        >
+          Cart
+        </Link>
+        {cartCount !== 0 ? (
+          <Badge variant="circle" mt={2}>
+            {cartCount}
+          </Badge>
+        ) : null}
+      </Flex>
     </Flex>
   );
 };

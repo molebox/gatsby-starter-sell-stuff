@@ -36,7 +36,7 @@ export default ({ data }) => {
           m: "0 auto",
         }}
       >
-        <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
+        <Box sx={{ mb: 5, width: "100vw", height: "auto" }}>
           <Image fluid={hero.asset.fluid} loading="lazy" />
         </Box>
         <Text as="h2" variant="styles.h3">
@@ -79,6 +79,9 @@ export const query = graphql`
         }
         price
         currency
+        description {
+          en
+        }
         images {
           asset {
             fluid {

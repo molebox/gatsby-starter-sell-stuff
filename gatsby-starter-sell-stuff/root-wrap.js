@@ -3,24 +3,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CartProvider } from 'use-shopping-cart';
 import { useSiteMetadata } from './src/components/useSiteMetadata';
 import SiteProvider from './src/components/context';
-import {
-    ApolloProvider,
-    ApolloClient,
-    createHttpLink,
-    InMemoryCache,
-} from '@apollo/client';
-import fetch from 'isomorphic-fetch';
-
-const httpLink = createHttpLink({
-    uri: `https://${process.env.GATSBY_SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${process.env.GATSBY_SANITY_DATASET}/default`,
-    fetch,
-  });
-
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link: httpLink,
-    fetch,
-  });
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_API_PUBLIC);
 
@@ -37,9 +19,7 @@ const WithMetaData = ({element}) => {
         mode="checkout-session"
         >
            <SiteProvider>
-            <ApolloProvider client={client}>
-                    {element}
-            </ApolloProvider>
+                {element}
             </SiteProvider>
         </CartProvider>
     )

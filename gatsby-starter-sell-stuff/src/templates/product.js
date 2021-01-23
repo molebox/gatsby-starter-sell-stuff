@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { graphql } from "gatsby";
 import { Box, Text, Flex, Button } from "theme-ui";
 import Image from "gatsby-image";
-import ProductLayout from "../components/product/product-layout";
+import gsap from "gsap";
 import { DispatchContext } from "../components/context";
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
 import RelatedProducts from "../components/product/showcase";
@@ -94,6 +94,7 @@ const Product = ({ data }) => {
               justifyContent: "space-evenly",
               gap: 1,
               my: [3, null],
+              order: [1, 0],
             }}
           >
             {images.map((image, index) => (
@@ -126,7 +127,7 @@ const Product = ({ data }) => {
         </Flex>
 
         <Box>
-          <Text as="p" variant="styles.p" sx={{ maxWidth: 800, my: 3 }}>
+          <Text as="p" variant="styles.p" sx={{ maxWidth: 700, my: 3 }}>
             {description.en}
           </Text>
         </Box>
@@ -165,15 +166,29 @@ const Product = ({ data }) => {
                 variant="productHeading"
                 sx={{ color: "background", textTransform: "uppercase" }}
               >
-                buy
+                add to cart
               </Text>
             </Button>
           </Box>
         </Flex>
-        <Text as="h2" variant="productSubHeading" sx={{ mt: 5 }}>
-          You might also like
-        </Text>
-        <RelatedProducts products={categories[0].products} />
+        <Box sx={{ maxWidth: 700, textAlign: "center" }}>
+          <Text
+            as="h2"
+            variant="productSubHeading"
+            sx={{
+              mt: 5,
+              width: "max-content",
+              alignSelf: "center",
+              width: "100%",
+            }}
+          >
+            You might also like
+          </Text>
+          <RelatedProducts
+            products={categories[0].products}
+            imageSize={[100, 200]}
+          />
+        </Box>
       </Flex>
     </Flex>
   );
@@ -215,6 +230,7 @@ export const query = graphql`
             current
           }
           price
+          currency
           images {
             asset {
               fluid {

@@ -36,7 +36,7 @@ export default {
     },
     productHeading: {
       variant: "text.body",
-      fontSize: [5, 6],
+      fontSize: [3, 6],
       borderBottom: "solid 2px",
     },
     productSubHeading: {
@@ -61,7 +61,7 @@ export default {
       mb: 4,
     },
     categoryPrice: {
-      fontSize: [3, 5],
+      fontSize: [3, 4],
     },
     siteTitle: {
       variant: "text.heading",
@@ -104,7 +104,7 @@ export default {
     },
     p: {
       variant: "text.body",
-      fontSize: 2,
+      fontSize: [1, 2],
     },
     footer: {
       gridArea: "footer",

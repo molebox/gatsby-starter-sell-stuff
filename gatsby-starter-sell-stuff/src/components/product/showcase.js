@@ -2,8 +2,11 @@ import React from "react";
 import { Flex, Box, Text } from "theme-ui";
 import Image from "gatsby-image";
 import { ListTLink, animateObjects, newContent } from "../base/layout";
+import { formatCurrencyString } from "use-shopping-cart";
 
-const Showcase = ({ products }) => {
+const Showcase = ({ products, imageSize }) => {
+  console.log({ products });
+
   return (
     <Flex
       sx={{
@@ -42,7 +45,7 @@ const Showcase = ({ products }) => {
           >
             <Box
               sx={{
-                width: [100, 200],
+                width: imageSize,
                 height: "auto",
                 p: 2,
               }}
@@ -53,7 +56,11 @@ const Showcase = ({ products }) => {
               {product.title}
             </Text>
             <Text as="p" variant="categoryPrice">
-              ${product.price}
+              {formatCurrencyString({
+                value: product.price * 100,
+                currency: product.currency,
+                language: "en-US",
+              })}
             </Text>
           </Flex>
         </ListTLink>

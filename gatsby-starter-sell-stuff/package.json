@@ -14,12 +14,10 @@
     "z": "gatsby clean && gatsby develop"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.6",
     "@fontsource/montserrat": "^4.1.0",
     "@sanity/client": "^2.1.4",
     "@stripe/stripe-js": "^1.11.0",
     "gatsby": "^2.30.1",
-    "gatsby-background-image": "^1.4.0",
     "gatsby-image": "^2.9.0",
     "gatsby-plugin-brotli": "^2.0.0",
     "gatsby-plugin-manifest": "^2.10.0",
@@ -34,7 +32,6 @@
     "gatsby-source-sanity": "^6.0.4",
     "gatsby-transformer-sharp": "^2.10.1",
     "gsap": "^3.5.1",
-    "isomorphic-fetch": "^3.0.0",
     "react": "^17.0.1",
     "react-animated-burgers": "^1.2.8",
     "react-dom": "npm:@hot-loader/react-dom",

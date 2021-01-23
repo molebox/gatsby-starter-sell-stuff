@@ -42,13 +42,12 @@ export default ({ data }) => {
         <Text as="h2" variant="styles.h3">
           Featured Products
         </Text>
-        <Showcase products={featuredProducts} />
+        <Showcase products={featuredProducts} imageSize={[200, 300]} />
         <Divider />
         <Masonry images={images} />
         <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
           <Image fluid={heroTwo.asset.fluid} loading="lazy" />
         </Box>
-
       </Flex>
     </>
   );
@@ -79,6 +78,7 @@ export const query = graphql`
           current
         }
         price
+        currency
         images {
           asset {
             fluid {

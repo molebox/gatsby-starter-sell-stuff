@@ -129,6 +129,7 @@ const Showcase = ({ products, imageSize, showMain, text }) => {
                           ? product.mainImage.asset.fluid
                           : product.images[0].asset.fluid
                       }
+                      alt={`product-${product.slug.current}`}
                     />
                   </Box>
                 </Overlay>

@@ -86,7 +86,7 @@ const Cart = () => {
             sx={{ cursor: "crosshair" }}
             onClick={() => dispatch({ type: "cartOpen", payload: false })}
           >
-            <Text as="h3" variant="styles.h3">
+            <Text as="h2" variant="styles.h3">
               Close
             </Text>
           </Box>

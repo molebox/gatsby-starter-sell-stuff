@@ -58,11 +58,11 @@ export default ({ data }) => {
             <Box variant="homePageBrandDescriptionImage">
               <Image fluid={brandDescOne.image.asset.fluid} />
             </Box>
-            <Flex variant="homePageBrandDescriptionText">
+            <Flex variant="homePageBrandDescriptionText" sx={{ order: [0, 1] }}>
               <Text
                 as="h3"
                 variant="styles.h2"
-                sx={{ my: 3, textAlign: ["center", "none"] }}
+                sx={{ my: 3, textAlign: ["center", "start"] }}
               >
                 {brandDescOne.title}
               </Text>
@@ -72,28 +72,17 @@ export default ({ data }) => {
             </Flex>
           </Flex>
 
-          <Flex
-            sx={{
-              flexDirection: ["column", "row"],
-              my: 4,
-              alignItems: "center",
-              justifyContent: "center",
-              m: 3,
-            }}
-          >
+          <Flex variant="homePageBrandDescriptionLayout">
             <Flex
+              variant="homePageBrandDescriptionText"
               sx={{
-                flexDirection: "column",
                 order: [1, 0],
-                my: 2,
-                p: 2,
-                maxWidth: 500,
               }}
             >
               <Text
                 as="h3"
                 variant="styles.h2"
-                sx={{ my: 3, textAlign: ["center", "none"] }}
+                sx={{ my: 3, textAlign: ["center", "start"] }}
               >
                 {brandDescTwo.title}
               </Text>
@@ -107,10 +96,6 @@ export default ({ data }) => {
           </Flex>
         </Flex>
         <Divider />
-        {/* <Masonry images={images} /> */}
-        {/* <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
-          <Image fluid={heroTwo.asset.fluid} loading="lazy" />
-        </Box> */}
       </Flex>
     </>
   );

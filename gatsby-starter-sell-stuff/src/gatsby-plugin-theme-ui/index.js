@@ -181,7 +181,6 @@ export default {
   },
   homePageBrandDescriptionText: {
     flexDirection: "column",
-    order: [1, 0],
     my: 2,
     p: 2,
     maxWidth: 500,

@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Text, Divider } from "theme-ui";
+import { Flex, Box, Text, Divider, Button, Textarea } from "theme-ui";
 import SEO from "react-seo-component";
 import { graphql } from "gatsby";
 import Image from "gatsby-image";
@@ -9,10 +9,12 @@ import Showcase from "../components/product/showcase";
 
 export default ({ data }) => {
   const { title, description } = useSiteMetadata();
+  console.log({ data });
   const images = data.sanityHomePage.images;
   const hero = data.sanityHomePage.sectionOne.imageOne;
   const heroTwo = data.sanityHomePage.sectionOne.imageTwo;
   const featuredProducts = data.sanityHomePage.featuredProducts;
+  // const herosrc = data.sanityHomePage.sectionOne.imageOne.asset.fluid.src;
 
   return (
     <>
@@ -36,14 +38,60 @@ export default ({ data }) => {
           m: "0 auto",
         }}
       >
-        <Box sx={{ mb: 5, width: "100vw", height: "auto" }}>
-          <Image fluid={hero.asset.fluid} loading="lazy" />
+        <Flex
+          sx={{
+            flexDirection: ["column", "column", "row"],
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 4,
+            height: "90vh",
+          }}
+        >
+          <Box sx={{ width: [300, 400], height: "auto", position: "relative" }}>
+            <Box
+              sx={{
+                position: "absolute",
+                top: [30, 50],
+                left: 0,
+                borderRadius: "50%",
+                width: [300, 400, 400],
+                height: [300, 400, 400],
+                backgroundColor: "text",
+                zIndex: -999,
+              }}
+            />
+            <Image fluid={hero.asset.fluid} loading="lazy" />
+          </Box>
+          <Flex
+            sx={{
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "start",
+              height: "auto",
+              m: 3,
+            }}
+          >
+            <Text as="h2" variant="callToAction">
+              Start selling today
+            </Text>
+            <Flex sx={{ flexDirection: "column", my: 3 }}>
+              <Text as="p" variant="styles.p">
+                A super fast, static webshop built with Gatsby, Sanity, Stripe
+                and Netlify.
+              </Text>
+            </Flex>
+            <Button variant="standard">Shop Now</Button>
+          </Flex>
+        </Flex>
+        <Box as="section" sx={{ my: 5, textAlign: "center" }}>
+          <Showcase
+            products={featuredProducts}
+            showMain
+            imageSize={[200, 400]}
+            text="Featured Products"
+          />
+          <Divider />
         </Box>
-        <Text as="h2" variant="styles.h3">
-          Featured Products
-        </Text>
-        <Showcase products={featuredProducts} imageSize={[200, 300]} />
-        <Divider />
         <Masonry images={images} />
         <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
           <Image fluid={heroTwo.asset.fluid} loading="lazy" />
@@ -82,7 +130,7 @@ export const query = graphql`
         description {
           en
         }
-        images {
+        mainImage {
           asset {
             fluid {
               ...GatsbySanityImageFluid

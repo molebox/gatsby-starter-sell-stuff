@@ -68,6 +68,10 @@ export default {
       fontSize: [2, 4],
       color: "text",
     },
+    callToAction: {
+      fontSize: [4, 4, 6],
+      variant: "text.heading",
+    },
   },
   sizes: {
     sidebar: [80, "100%", "100%"],
@@ -222,6 +226,19 @@ export default {
       "&:hover": {
         backgroundColor: "text",
         color: "background",
+        cursor: "crosshair",
+        border: "solid 1px",
+      },
+    },
+    standard: {
+      width: 250,
+      backgroundColor: "text",
+      color: "background",
+      variant: "text.heading",
+      height: "50px",
+      "&:hover": {
+        backgroundColor: "background",
+        color: "text",
         cursor: "crosshair",
         border: "solid 1px",
       },

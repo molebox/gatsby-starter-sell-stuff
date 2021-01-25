@@ -6,12 +6,10 @@ import { formatCurrencyString } from "use-shopping-cart";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const Showcase = ({ products, imageSize }) => {
+const Showcase = ({ products, imageSize, showMain, text }) => {
+  const showcaseTitleRef = useRef();
   const showcaseRef = useRef();
   showcaseRef.current = [];
-
-  const getRandomInteger = (min, max) =>
-    Math.floor(Math.random() * (max - min + 1) + min);
 
   const addToRefs = (el) => {
     if (el && !showcaseRef.current.includes(el)) {
@@ -22,8 +20,22 @@ const Showcase = ({ products, imageSize }) => {
     if (typeof window !== undefined) {
       gsap.registerPlugin(ScrollTrigger);
 
-      let TL = gsap.timeline();
-
+      gsap.fromTo(
+        showcaseTitleRef.current,
+        {
+          autoAlpha: 0,
+        },
+        {
+          duration: 1,
+          autoAlpha: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: showcaseTitleRef.current,
+            start: "top center+=100",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
       showcaseRef.current.forEach((showcase, index) => {
         gsap.fromTo(
           showcase,
@@ -34,13 +46,10 @@ const Showcase = ({ products, imageSize }) => {
             duration: 1,
             autoAlpha: 1,
             ease: "none",
-            stagger: {
-              amount: 1.5,
-            },
             scrollTrigger: {
               id: `section-${index + 1}`,
               trigger: showcase,
-              start: "center center+=100",
+              start: "top center+=100",
               toggleActions: "play none none reverse",
             },
           }
@@ -51,63 +60,90 @@ const Showcase = ({ products, imageSize }) => {
   return (
     <Flex
       sx={{
-        gap: 2,
         justifyContent: "center",
-        flexWrap: "wrap",
-        width: "100%",
-        my: 4,
+        alignItems: "center",
+        flexDirection: "column",
       }}
     >
-      {products.map((product, index) => (
-        <Box ref={addToRefs}>
-          <ListTLink
-            key={index}
-            to={`/product/${product.slug.current}`}
-            activeClass="active"
-            exit={{
-              length: 0.6,
-              trigger: ({ exit, e, node }) => animateObjects(exit, node),
-            }}
-            entry={{
-              delay: 0.5,
-              length: 0.6,
-              trigger: ({ entry, node }) => newContent(node),
-            }}
-          >
-            <Flex
+      <Text
+        ref={showcaseTitleRef}
+        as="h2"
+        variant="productSubHeading"
+        sx={{
+          mt: 5,
+          width: "max-content",
+          alignSelf: "center",
+          width: "100%",
+        }}
+      >
+        {text}
+      </Text>
+      <Flex
+        sx={{
+          gap: 2,
+          justifyContent: "center",
+          flexWrap: "wrap",
+          width: "100%",
+          my: 4,
+        }}
+      >
+        {products.map((product, index) => (
+          <Box ref={addToRefs}>
+            <ListTLink
               key={index}
-              sx={{
-                flexDirection: "column",
-                alignItems: "center",
-                width: "100%",
-                justifyContent: "space-evenly",
-                p: 3,
-                backgroundColor: "secondary",
+              to={`/product/${product.slug.current}`}
+              activeClass="active"
+              exit={{
+                length: 0.6,
+                trigger: ({ exit, e, node }) => animateObjects(exit, node),
+              }}
+              entry={{
+                delay: 0.5,
+                length: 0.6,
+                trigger: ({ entry, node }) => newContent(node),
               }}
             >
-              <Box
+              <Flex
+                key={index}
                 sx={{
-                  width: imageSize,
-                  height: "auto",
-                  p: 2,
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "100%",
+                  justifyContent: "space-evenly",
+                  p: 3,
+                  backgroundColor: "secondary",
                 }}
               >
-                <Image fluid={product.images[0].asset.fluid} />
-              </Box>
-              <Text as="p" variant="relatedProductHeadingCategory">
-                {product.title}
-              </Text>
-              <Text as="p" variant="categoryPrice">
-                {formatCurrencyString({
-                  value: product.price * 100,
-                  currency: product.currency,
-                  language: "en-US",
-                })}
-              </Text>
-            </Flex>
-          </ListTLink>
-        </Box>
-      ))}
+                <Box
+                  sx={{
+                    width: imageSize,
+                    height: "auto",
+                    p: 2,
+                  }}
+                >
+                  <Image
+                    fluid={
+                      showMain
+                        ? product.mainImage.asset.fluid
+                        : product.images[0].asset.fluid
+                    }
+                  />
+                </Box>
+                <Text as="p" variant="relatedProductHeadingCategory">
+                  {product.title}
+                </Text>
+                <Text as="p" variant="categoryPrice">
+                  {formatCurrencyString({
+                    value: product.price * 100,
+                    currency: product.currency,
+                    language: "en-US",
+                  })}
+                </Text>
+              </Flex>
+            </ListTLink>
+          </Box>
+        ))}
+      </Flex>
     </Flex>
   );
 };

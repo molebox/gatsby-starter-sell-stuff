@@ -172,21 +172,10 @@ const Product = ({ data }) => {
           </Box>
         </Flex>
         <Box sx={{ maxWidth: 700, textAlign: "center" }}>
-          <Text
-            as="h2"
-            variant="productSubHeading"
-            sx={{
-              mt: 5,
-              width: "max-content",
-              alignSelf: "center",
-              width: "100%",
-            }}
-          >
-            You might also like
-          </Text>
           <RelatedProducts
             products={categories[0].products}
             imageSize={[100, 200]}
+            text="You might also like"
           />
         </Box>
       </Flex>

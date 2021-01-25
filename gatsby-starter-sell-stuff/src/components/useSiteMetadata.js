@@ -12,6 +12,11 @@ export const useSiteMetadata = () => {
             currency
             allowedCountries
             owner
+            homePage {
+              callToActionTitle
+              callToActionDescription
+              callToActionBtnText
+            }
           }
         }
       }

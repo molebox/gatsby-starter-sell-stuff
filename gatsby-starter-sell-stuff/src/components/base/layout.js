@@ -47,7 +47,7 @@ export function animateObjects() {
 // new content to be faded in after animation
 export function newContent(node) {
   return gsap.from(node.querySelectorAll("h1, h2, h3, h4, p, a, img "), {
-    opacity: 0,
+    // opacity: 0,
     delay: 1,
     duration: 2,
     stagger: 0.08,

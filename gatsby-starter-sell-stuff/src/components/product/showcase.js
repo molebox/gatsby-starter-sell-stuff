@@ -5,6 +5,7 @@ import { ListTLink, animateObjects, newContent } from "../base/layout";
 import { formatCurrencyString } from "use-shopping-cart";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Overlay from "../base/overlay";
 
 const Showcase = ({ products, imageSize, showMain, text }) => {
   const showcaseTitleRef = useRef();
@@ -114,21 +115,23 @@ const Showcase = ({ products, imageSize, showMain, text }) => {
                   backgroundColor: "secondary",
                 }}
               >
-                <Box
-                  sx={{
-                    width: imageSize,
-                    height: "auto",
-                    p: 2,
-                  }}
-                >
-                  <Image
-                    fluid={
-                      showMain
-                        ? product.mainImage.asset.fluid
-                        : product.images[0].asset.fluid
-                    }
-                  />
-                </Box>
+                <Overlay text="shop" width={imageSize}>
+                  <Box
+                    sx={{
+                      width: imageSize,
+                      height: "auto",
+                      p: 2,
+                    }}
+                  >
+                    <Image
+                      fluid={
+                        showMain
+                          ? product.mainImage.asset.fluid
+                          : product.images[0].asset.fluid
+                      }
+                    />
+                  </Box>
+                </Overlay>
                 <Text as="p" variant="relatedProductHeadingCategory">
                   {product.title}
                 </Text>

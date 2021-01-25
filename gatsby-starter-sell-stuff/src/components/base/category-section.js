@@ -84,20 +84,3 @@ const CategorySection = ({ categories }) => {
 };
 
 export default CategorySection;
-
-// const GET_CATEGORIES = gql`
-//   query GetCategories($title: String!) {
-//     allCategory(where: { title: { eq: $title } }) {
-//       title
-//       slug {
-//         current
-//       }
-//       subCategories {
-//         title
-//         slug {
-//           current
-//         }
-//       }
-//     }
-//   }
-// `;

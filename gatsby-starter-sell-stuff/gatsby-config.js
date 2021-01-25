@@ -12,7 +12,12 @@ module.exports = {
         description: 'A Gatsby ecommerce starter setup with Stripe integration and Sanity for content management.',
         currency: 'USD',
         allowedCountries: ['US', 'GB', 'CA'],
-        owner: 'Rich Haines'
+        owner: 'Rich Haines',
+        homePage: {
+          callToActionTitle: 'Start selling today',
+          callToActionDescription: ' A super fast, static web-shop built with Gatsby, Sanity, Stripe and Netlify.',
+          callToActionBtnText: 'Shop Now'
+        }
       },
     plugins: [
         {

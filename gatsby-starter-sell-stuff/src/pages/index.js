@@ -6,6 +6,8 @@ import Image from "gatsby-image";
 import { useSiteMetadata } from "../components/useSiteMetadata";
 import Masonry from "../components/home-page/masonry";
 import Showcase from "../components/product/showcase";
+import HeroImage from "../components/home-page/hero-image";
+import HeroCTA from "./../components/home-page/hero-cta";
 
 export default ({ data }) => {
   const { title, description } = useSiteMetadata();
@@ -28,60 +30,10 @@ export default ({ data }) => {
         twitterUsername="@studio_hungry"
         author="Rich Haines"
       />
-      <Flex
-        sx={{
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
-          maxWidth: 1440,
-          m: "0 auto",
-        }}
-      >
-        <Flex
-          sx={{
-            flexDirection: ["column", "column", "row"],
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 4,
-            height: "90vh",
-          }}
-        >
-          <Box sx={{ width: [300, 400], height: "auto", position: "relative" }}>
-            <Box
-              sx={{
-                position: "absolute",
-                top: [30, 50],
-                left: 0,
-                borderRadius: "50%",
-                width: [300, 400, 400],
-                height: [300, 400, 400],
-                backgroundColor: "text",
-                zIndex: -999,
-              }}
-            />
-            <Image fluid={hero.asset.fluid} loading="lazy" />
-          </Box>
-          <Flex
-            sx={{
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "start",
-              height: "auto",
-              m: 3,
-            }}
-          >
-            <Text as="h2" variant="callToAction">
-              Start selling today
-            </Text>
-            <Flex sx={{ flexDirection: "column", my: 3 }}>
-              <Text as="p" variant="styles.p">
-                A super fast, static webshop built with Gatsby, Sanity, Stripe
-                and Netlify.
-              </Text>
-            </Flex>
-            <Button variant="standard">Shop Now</Button>
-          </Flex>
+      <Flex variant="homePageLayout">
+        <Flex as="section" variant="homePageHero">
+          <HeroImage image={hero.asset.fluid} />
+          <HeroCTA />
         </Flex>
         <Box as="section" sx={{ my: 5, textAlign: "center" }}>
           <Showcase

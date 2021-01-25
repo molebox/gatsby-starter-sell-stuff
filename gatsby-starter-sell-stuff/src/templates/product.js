@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState } from "react";
 import { graphql } from "gatsby";
 import { Box, Text, Flex, Button } from "theme-ui";
 import Image from "gatsby-image";
-import gsap from "gsap";
 import { DispatchContext } from "../components/context";
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
 import RelatedProducts from "../components/product/showcase";
@@ -32,7 +31,6 @@ const Product = ({ data }) => {
     addItem(
       {
         name: title,
-        // description: description.en,
         id: productId.current,
         price: price * 100,
         currency,
@@ -44,14 +42,7 @@ const Product = ({ data }) => {
   };
 
   return (
-    <Flex
-      sx={{
-        flexDirection: ["column", "row"],
-        overflowY: "hidden",
-        height: "100%",
-        position: "relative",
-      }}
-    >
+    <Flex variant="productLayout">
       <Box
         as="section"
         sx={{
@@ -63,40 +54,13 @@ const Product = ({ data }) => {
         </Box>
       </Box>
 
-      <Flex
-        as="section"
-        sx={{
-          width: ["100%", "50%"],
-          alignItems: "center",
-          flexDirection: "column",
-          justifyContent: "space-evenly",
-          alignSelf: "start",
-          p: 3,
-          gap: 1,
-        }}
-      >
+      <Flex as="section" variant="productInfoLayout">
         <Text as="h1" variant="productHeading" sx={{ my: 3 }}>
           {title}
         </Text>
 
-        <Flex
-          sx={{
-            gap: 1,
-            justifyContent: ["space-around"],
-            alignItems: "center",
-            width: [300, 600, 800],
-            flexDirection: ["column", "row"],
-          }}
-        >
-          <Flex
-            sx={{
-              flexDirection: ["row", "column"],
-              justifyContent: "space-evenly",
-              gap: 1,
-              my: [3, null],
-              order: [1, 0],
-            }}
-          >
+        <Flex variant="productImagesOuterLayout">
+          <Flex variant="productImageThumbsLayout">
             {images.map((image, index) => (
               <Box
                 sx={{
@@ -113,15 +77,7 @@ const Product = ({ data }) => {
               </Box>
             ))}
           </Flex>
-          <Box
-            sx={{
-              width: [200, 400],
-              height: "auto",
-              backgroundColor: "text",
-              p: 3,
-              boxShadow: "7px 8px 2px 0px hsla(0,0%,0%,0.2)",
-            }}
-          >
+          <Box variant="productImageMainLayout">
             <Image fluid={selectedImage} loading="lazy" />
           </Box>
         </Flex>

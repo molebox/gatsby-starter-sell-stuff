@@ -167,6 +167,25 @@ export default {
     height: "auto",
     m: 3,
   },
+  homePageBrandDescriptionLayout: {
+    flexDirection: ["column", "row"],
+    my: 4,
+    alignItems: "center",
+    justifyContent: "center",
+    m: 3,
+    gap: 3,
+  },
+  homePageBrandDescriptionImage: {
+    width: [300, 400, 800],
+    height: "auto",
+  },
+  homePageBrandDescriptionText: {
+    flexDirection: "column",
+    order: [1, 0],
+    my: 2,
+    p: 2,
+    maxWidth: 500,
+  },
   productLayout: {
     flexDirection: ["column", "row"],
     overflowY: "hidden",

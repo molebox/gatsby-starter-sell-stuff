@@ -17,6 +17,7 @@ import homePage from './homePage'
 import homePageSectionOne from './homePageSectionOne'
 import homePageSectionTwo from './homePageSectionTwo'
 import homePageSectionThree from './homePageSectionThree'
+import brandDescription from './brandDescription'
 
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -37,6 +38,7 @@ export default createSchema({
     homePageSectionOne,
     homePageSectionTwo,
     homePageSectionThree,
+    brandDescription,
     blockContent,
     localeText,
     localeBlockContent,

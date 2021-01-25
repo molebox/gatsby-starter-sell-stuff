@@ -11,12 +11,14 @@ import HeroCTA from "./../components/home-page/hero-cta";
 
 export default ({ data }) => {
   const { title, description } = useSiteMetadata();
-  console.log({ data });
+
   const images = data.sanityHomePage.images;
   const hero = data.sanityHomePage.sectionOne.imageOne;
-  const heroTwo = data.sanityHomePage.sectionOne.imageTwo;
+  const sectionTwo = data.sanityHomePage.sectionTwo;
+  const brandDescOne = sectionTwo.brandDescriptionOne;
+  const brandDescTwo = sectionTwo.brandDescriptionTwo;
+
   const featuredProducts = data.sanityHomePage.featuredProducts;
-  // const herosrc = data.sanityHomePage.sectionOne.imageOne.asset.fluid.src;
 
   return (
     <>
@@ -44,10 +46,71 @@ export default ({ data }) => {
           />
           <Divider />
         </Box>
-        <Masonry images={images} />
-        <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
+        <Flex
+          as="section"
+          sx={{
+            flexDirection: "column",
+            backgroundColor: "muted",
+            p: 2,
+          }}
+        >
+          <Flex variant="homePageBrandDescriptionLayout">
+            <Box variant="homePageBrandDescriptionImage">
+              <Image fluid={brandDescOne.image.asset.fluid} />
+            </Box>
+            <Flex variant="homePageBrandDescriptionText">
+              <Text
+                as="h3"
+                variant="styles.h2"
+                sx={{ my: 3, textAlign: ["center", "none"] }}
+              >
+                {brandDescOne.title}
+              </Text>
+              <Text as="p" variant="styles.p">
+                {brandDescOne.description}
+              </Text>
+            </Flex>
+          </Flex>
+
+          <Flex
+            sx={{
+              flexDirection: ["column", "row"],
+              my: 4,
+              alignItems: "center",
+              justifyContent: "center",
+              m: 3,
+            }}
+          >
+            <Flex
+              sx={{
+                flexDirection: "column",
+                order: [1, 0],
+                my: 2,
+                p: 2,
+                maxWidth: 500,
+              }}
+            >
+              <Text
+                as="h3"
+                variant="styles.h2"
+                sx={{ my: 3, textAlign: ["center", "none"] }}
+              >
+                {brandDescTwo.title}
+              </Text>
+              <Text as="p" variant="styles.p">
+                {brandDescTwo.description}
+              </Text>
+            </Flex>
+            <Box sx={{ width: [300, 400, 800], height: "auto" }}>
+              <Image fluid={brandDescTwo.image.asset.fluid} />
+            </Box>
+          </Flex>
+        </Flex>
+        <Divider />
+        {/* <Masonry images={images} /> */}
+        {/* <Box sx={{ my: 5, width: "100vw", height: "auto" }}>
           <Image fluid={heroTwo.asset.fluid} loading="lazy" />
-        </Box>
+        </Box> */}
       </Flex>
     </>
   );
@@ -64,10 +127,27 @@ export const query = graphql`
             }
           }
         }
-        imageTwo {
-          asset {
-            fluid(maxWidth: 1920) {
-              ...GatsbySanityImageFluid
+      }
+      sectionTwo {
+        brandDescriptionOne {
+          title
+          description
+          image {
+            asset {
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+        }
+        brandDescriptionTwo {
+          title
+          description
+          image {
+            asset {
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
             }
           }
         }
@@ -79,9 +159,6 @@ export const query = graphql`
         }
         price
         currency
-        description {
-          en
-        }
         mainImage {
           asset {
             fluid(maxWidth: 400) {

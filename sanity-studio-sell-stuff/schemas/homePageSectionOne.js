@@ -17,14 +17,5 @@ export default {
                 hotspot: true
             }
         },
-        {
-            name: 'imageTwo',
-            title: 'Image Two',
-            type: 'image',
-            description: 'Second Hero image for the first section of the home page',
-            options: {
-                hotspot: true
-            }
-        }
     ]
 }

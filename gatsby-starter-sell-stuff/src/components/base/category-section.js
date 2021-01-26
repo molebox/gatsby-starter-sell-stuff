@@ -43,6 +43,9 @@ const CategorySection = ({ categories }) => {
           maxWidth: 1440,
         }}
       >
+        <Text as="p" variant="styles.p">
+          This whole section needs work... What do i put here?
+        </Text>
         <Link
           as={GatsbyLink}
           to="/all-products"

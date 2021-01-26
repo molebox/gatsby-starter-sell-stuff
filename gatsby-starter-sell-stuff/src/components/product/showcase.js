@@ -89,9 +89,8 @@ const Showcase = ({ products, imageSize, showMain, text }) => {
         }}
       >
         {products.map((product, index) => (
-          <Box ref={addToRefs}>
+          <Box key={index} ref={addToRefs}>
             <ListTLink
-              key={index}
               to={`/product/${product.slug.current}`}
               activeClass="active"
               exit={{

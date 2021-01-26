@@ -152,13 +152,6 @@ export const query = graphql`
           }
         }
       }
-      images {
-        asset {
-          fixed(width: 300) {
-            ...GatsbySanityImageFixed
-          }
-        }
-      }
     }
   }
 `;

@@ -10,13 +10,22 @@ const sanityQuery = '*[_type == "product"]'
 
 exports.handler = async (event) => {
     try {
+        // The cart contents
         const productJSON = JSON.parse(event.body);
 
-        const products = await client.fetch(sanityQuery, {});
+        // Get the inventory from sanity to validate cart contents against
+        const sanityProducts = await client.fetch(sanityQuery, {});
 
-        console.log({products})
+        // Clean up the sanity inventory to only have the stuff stripe cares about to check against
+        const inventory = sanityProducts.map((product) => ({
+            name: product.title,
+            id: product.productId.current,
+            sku: product.sku,
+            price: product.price * 100,
+            currency: product.currency
+        }));
 
-        const line_items = validateCartItems(products, productJSON);
+        const line_items = validateCartItems(inventory, productJSON);
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -28,8 +37,12 @@ exports.handler = async (event) => {
 
             success_url: `https://gatsby-starter-sell-stuff.netlify.app/success`,
             cancel_url: `https://gatsby-starter-sell-stuff.netlify.app/cancelled`,
+            // success_url: `http://localhost:8888/success`,
+            // cancel_url: `http://localhost:8888/cancelled`,
             line_items
         });
+
+        console.log({session})
 
         return {
             statusCode: 200,

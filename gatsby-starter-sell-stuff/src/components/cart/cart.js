@@ -94,7 +94,7 @@ const Cart = () => {
         {Object.keys(cartDetails).map((cartItem, index) => {
           const item = cartDetails[cartItem];
           return (
-            <>
+            <React.Fragment key={index}>
               <Flex
                 key={index}
                 sx={{
@@ -129,7 +129,7 @@ const Cart = () => {
                 </Flex>
               </Flex>
               {cartCount !== 0 ? <Divider /> : null}
-            </>
+            </React.Fragment>
           );
         })}
       </Flex>

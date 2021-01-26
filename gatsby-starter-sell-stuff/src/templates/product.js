@@ -16,6 +16,7 @@ const Product = ({ data }) => {
     mainImage,
     images,
     categories,
+    sku,
   } = data.product;
   const dispatch = useContext(DispatchContext);
   const [selectedImage, setSelectedImage] = useState(images[0].asset.fluid);
@@ -34,6 +35,7 @@ const Product = ({ data }) => {
         id: productId.current,
         price: price * 100,
         currency,
+        sku: sku,
         image: images[0].asset.url,
       },
       1
@@ -150,6 +152,7 @@ export const query = graphql`
       title
       price
       currency
+      sku
       description {
         en
       }

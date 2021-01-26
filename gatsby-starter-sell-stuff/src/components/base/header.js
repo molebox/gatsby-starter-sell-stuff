@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
 import { Flex, Link, Text, Badge } from "theme-ui";
 import { DispatchContext, StateContext } from "../context";
 import Burger from "./burger";

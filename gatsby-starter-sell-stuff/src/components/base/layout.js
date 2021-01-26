@@ -13,14 +13,14 @@ import gsap from "gsap";
 // Page transition animation => https://lborges.dev/gsap-tl-gatsby/
 
 // Transition Link Component
-export const ListTLink = (props, ref, ...rest) => (
+export const ListTLink = (props, color, ...rest) => (
   <TransitionLink
     to={props.to}
     entry={props.entry}
     exit={props.exit}
     trigger={props.trigger}
     {...rest}
-    style={{ textDecoration: "none", color: "#212529", cursor: "crosshair" }}
+    sx={{ color: "background", textDecoration: "none", cursor: "crosshair" }}
   >
     {props.children}
   </TransitionLink>

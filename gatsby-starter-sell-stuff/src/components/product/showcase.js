@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { Flex, Box, Text } from "theme-ui";
 import Image from "gatsby-image";
-import { ListTLink, animateObjects, newContent } from "../base/layout";
 import { formatCurrencyString } from "use-shopping-cart";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Overlay from "../base/overlay";
+import AnimatedLink from "./../base/animated-link";
 
 const Showcase = ({ products, imageSize, showMain, text }) => {
   const showcaseTitleRef = useRef();
@@ -74,7 +74,6 @@ const Showcase = ({ products, imageSize, showMain, text }) => {
           mt: 5,
           width: "max-content",
           alignSelf: "center",
-          width: "100%",
         }}
       >
         {text}
@@ -90,19 +89,7 @@ const Showcase = ({ products, imageSize, showMain, text }) => {
       >
         {products.map((product, index) => (
           <Box key={index} ref={addToRefs}>
-            <ListTLink
-              to={`/product/${product.slug.current}`}
-              activeClass="active"
-              exit={{
-                length: 0.6,
-                trigger: ({ exit, e, node }) => animateObjects(exit, node),
-              }}
-              entry={{
-                delay: 0.5,
-                length: 0.6,
-                trigger: ({ entry, node }) => newContent(node),
-              }}
-            >
+            <AnimatedLink to={`/product/${product.slug.current}`}>
               <Flex
                 key={index}
                 sx={{
@@ -143,7 +130,7 @@ const Showcase = ({ products, imageSize, showMain, text }) => {
                   })}
                 </Text>
               </Flex>
-            </ListTLink>
+            </AnimatedLink>
           </Box>
         ))}
       </Flex>

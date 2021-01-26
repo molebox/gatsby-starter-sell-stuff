@@ -7,14 +7,16 @@ import { globalHistory } from "@reach/router";
 const Cart = () => {
   const {
     cartDetails,
-    formattedTotalPrice,
-    handleCartClick,
     cartCount,
     removeItem,
     redirectToCheckout,
   } = useShoppingCart();
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
+
+  useEffect(() => {
+    console.log({ cartCount });
+  }, [cartCount]);
 
   useEffect(() => {
     // If the route has changed it means the user has clicked on a category and we want to wait half a second then close the pop out
@@ -91,47 +93,49 @@ const Cart = () => {
             </Text>
           </Box>
         </Flex>
-        {Object.keys(cartDetails).map((cartItem, index) => {
-          const item = cartDetails[cartItem];
-          return (
-            <React.Fragment key={index}>
-              <Flex
-                key={index}
-                sx={{
-                  gap: 3,
-                }}
-              >
-                <Image variant="productCartImage" src={item?.image} />
-                <Flex
-                  sx={{
-                    flexDirection: "column",
-                    justifyContent: "space-around",
-                  }}
-                >
-                  <Text as="h4" variant="styles.h2">
-                    {item?.name}
-                  </Text>
-                  <Text as="h4" variant="styles.h3">
-                    {formatCurrencyString({
-                      value: item.price,
-                      currency: item.currency,
-                      language: "en-US",
-                    })}
-                  </Text>
-                </Flex>
-                <Flex
-                  sx={{
-                    flexDirection: "column",
-                  }}
-                >
-                  <button onClick={() => removeItem(item.id)}>x</button>
-                  {/* {item?.formattedValue} */}
-                </Flex>
-              </Flex>
-              {cartCount !== 0 ? <Divider /> : null}
-            </React.Fragment>
-          );
-        })}
+        {cartCount !== 0
+          ? Object.keys(cartDetails).map((cartItem, index) => {
+              const item = cartDetails[cartItem];
+              return (
+                <React.Fragment key={index}>
+                  <Flex
+                    key={index}
+                    sx={{
+                      gap: 3,
+                    }}
+                  >
+                    <Image variant="productCartImage" src={item?.image} />
+                    <Flex
+                      sx={{
+                        flexDirection: "column",
+                        justifyContent: "space-around",
+                      }}
+                    >
+                      <Text as="h4" variant="styles.h2">
+                        {item?.name}
+                      </Text>
+                      <Text as="h4" variant="styles.h3">
+                        {formatCurrencyString({
+                          value: item.price,
+                          currency: item.currency,
+                          language: "en-US",
+                        })}
+                      </Text>
+                    </Flex>
+                    <Flex
+                      sx={{
+                        flexDirection: "column",
+                      }}
+                    >
+                      <button onClick={() => removeItem(item.id)}>x</button>
+                      {/* {item?.formattedValue} */}
+                    </Flex>
+                  </Flex>
+                  {cartCount !== 0 ? <Divider /> : null}
+                </React.Fragment>
+              );
+            })
+          : null}
       </Flex>
       <Flex
         sx={{

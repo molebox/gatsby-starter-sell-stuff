@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Flex, Link, Text, Box } from "theme-ui";
+import { Flex, Link, Text } from "theme-ui";
 import { Link as GatsbyLink } from "gatsby";
 import gsap from "gsap";
 import { DispatchContext, StateContext } from "./../context";
@@ -43,6 +43,17 @@ const CategorySection = ({ categories }) => {
           maxWidth: 1440,
         }}
       >
+        <Link
+          as={GatsbyLink}
+          to="/all-products"
+          activeClassName="active"
+          variant="linkEffect"
+          sx={{
+            fontSize: [5, 6],
+          }}
+        >
+          All Products
+        </Link>
         <Text as="h1" variant="styles.h1" sx={{ my: 3 }}>
           Categories
         </Text>
@@ -61,7 +72,7 @@ const CategorySection = ({ categories }) => {
                 activeClassName="active"
                 variant="linkEffect"
                 sx={{
-                  fontSize: [5, 6],
+                  fontSize: [3, 4],
                 }}
               >
                 {category.title}

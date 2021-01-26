@@ -1,21 +1,21 @@
 import React, { useRef, useEffect } from "react";
-import { Box } from "theme-ui";
+import { Box, Flex, Text } from "theme-ui";
 import Image from "gatsby-image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedLink from "./../base/animated-link";
+import Overlay from "../base/overlay";
+import { formatCurrencyString } from "use-shopping-cart";
 
 // Inspired by => https://css-tricks.com/piecing-together-approaches-for-a-css-masonry-layout/
 
-const Masonry = ({ images }) => {
-  const imagesRef = useRef([]);
-  imagesRef.current = [];
-
-  const getRandomInteger = (min, max) =>
-    Math.floor(Math.random() * (max - min + 1) + min);
+const Masonry = ({ products }) => {
+  const productsRef = useRef([]);
+  productsRef.current = [];
 
   const addToRefs = (el) => {
-    if (el && !imagesRef.current.includes(el)) {
-      imagesRef.current.push(el);
+    if (el && !productsRef.current.includes(el)) {
+      productsRef.current.push(el);
     }
   };
   useEffect(() => {
@@ -23,9 +23,9 @@ const Masonry = ({ images }) => {
       gsap.registerPlugin(ScrollTrigger);
       gsap.core.globals("ScrollTrigger", ScrollTrigger);
 
-      imagesRef.current.forEach((image, index) => {
+      productsRef.current.forEach((product, index) => {
         gsap.fromTo(
-          image,
+          product,
           {
             autoAlpha: 0,
           },
@@ -35,8 +35,8 @@ const Masonry = ({ images }) => {
             ease: "none",
             scrollTrigger: {
               id: `section-${index + 1}`,
-              trigger: image,
-              start: "top center+=100",
+              trigger: product,
+              start: "top top+=500",
               toggleActions: "play none none reverse",
             },
           }
@@ -46,24 +46,77 @@ const Masonry = ({ images }) => {
   }, []);
 
   return (
-    <Box
+    <Flex
       sx={{
-        columnGap: "0",
-        columns: "6 300px",
-        p: 2,
-        textAlign: "center",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        m: "0 auto",
         maxWidth: 1440,
         height: "100%",
+        minHeight: "100vh",
       }}
     >
-      {images.map((image, index) => (
-        <Box ref={addToRefs} key={index}>
-          {image.asset ? (
-            <Image fixed={image.asset.fixed} loading="lazy" />
-          ) : null}
-        </Box>
-      ))}
-    </Box>
+      <Text as="h1" variant="styles.h1">
+        All Products
+      </Text>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(auto, 300px))",
+          width: "100%",
+          maxWidth: 1440,
+          gap: 3,
+          // columnGap: 3,
+          // columns: "4 300px",
+          p: 2,
+        }}
+      >
+        {products.map((product, index) => (
+          <Box key={index} ref={addToRefs}>
+            <AnimatedLink to={`/product/${product.slug.current}`}>
+              <Flex
+                key={index}
+                sx={{
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "100%",
+                  justifyContent: "space-evenly",
+                  p: 3,
+                  backgroundColor: "secondary",
+                  my: 3,
+                }}
+              >
+                <Overlay text="shop" width={[300, 300]}>
+                  <Box
+                    sx={{
+                      width: [300, 300],
+                      height: "auto",
+                      p: 2,
+                    }}
+                  >
+                    <Image
+                      fluid={product.mainImage.asset.fluid}
+                      alt={`product-${product.slug.current}`}
+                    />
+                  </Box>
+                </Overlay>
+                <Text as="p" variant="relatedProductHeadingCategory">
+                  {product.title}
+                </Text>
+                <Text as="p" variant="categoryPrice">
+                  {formatCurrencyString({
+                    value: product.price * 100,
+                    currency: product.currency,
+                    language: "en-US",
+                  })}
+                </Text>
+              </Flex>
+            </AnimatedLink>
+          </Box>
+        ))}
+      </Box>
+    </Flex>
   );
 };
 

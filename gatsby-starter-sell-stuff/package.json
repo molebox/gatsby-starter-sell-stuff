@@ -11,7 +11,7 @@
     "pretty-check": "prettier --check \"src/**/*.{js}\"",
     "pretty": "prettier --write \"src/**/*js\"",
     "sitemap": "gatsby build && gatsby serve",
-    "z": "gatsby clean && gatsby develop"
+    "z": "gatsby clean && netlify dev"
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.1.0",

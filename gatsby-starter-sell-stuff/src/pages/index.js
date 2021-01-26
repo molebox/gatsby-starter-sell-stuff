@@ -1,23 +1,19 @@
 import React from "react";
-import { Flex, Box, Text, Divider, Button, Textarea } from "theme-ui";
+import { Flex, Box, Text, Divider } from "theme-ui";
 import SEO from "react-seo-component";
 import { graphql } from "gatsby";
 import Image from "gatsby-image";
 import { useSiteMetadata } from "../components/useSiteMetadata";
-import Masonry from "../components/home-page/masonry";
 import Showcase from "../components/product/showcase";
 import HeroImage from "../components/home-page/hero-image";
 import HeroCTA from "./../components/home-page/hero-cta";
 
 export default ({ data }) => {
   const { title, description } = useSiteMetadata();
-
-  const images = data.sanityHomePage.images;
   const hero = data.sanityHomePage.sectionOne.imageOne;
   const sectionTwo = data.sanityHomePage.sectionTwo;
   const brandDescOne = sectionTwo.brandDescriptionOne;
   const brandDescTwo = sectionTwo.brandDescriptionTwo;
-
   const featuredProducts = data.sanityHomePage.featuredProducts;
 
   return (

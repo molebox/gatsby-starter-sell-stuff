@@ -1,5 +1,6 @@
 import React from "react";
 import { Flex, Text, Button } from "theme-ui";
+import CallToAction from "../base/call-to-action";
 import { useSiteMetadata } from "./../useSiteMetadata";
 
 const HeroCTA = () => {
@@ -21,7 +22,7 @@ const HeroCTA = () => {
           {callToActionDescription}
         </Text>
       </Flex>
-      <Button variant="standard">{callToActionBtnText}</Button>
+      <CallToAction to="/all-products" text={callToActionBtnText} />
     </Flex>
   );
 };

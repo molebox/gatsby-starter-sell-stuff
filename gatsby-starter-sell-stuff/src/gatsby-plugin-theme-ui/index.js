@@ -124,7 +124,7 @@ export default {
       backgroundImage:
         "linear-gradient(to right, rgba(0, 0, 0, 0), rgb(237, 234, 227), rgba(0, 0, 0, 0))",
       width: "100%",
-      my: 5,
+      my: 3,
     },
   },
   homePageLayout: {
@@ -353,6 +353,9 @@ export default {
       color: "background",
       variant: "text.heading",
       height: "50px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       "&:hover": {
         backgroundColor: "background",
         color: "text",

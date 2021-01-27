@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Flex, Link, Text } from "theme-ui";
+import { Divider, Flex, Link, Text } from "theme-ui";
 import { Link as GatsbyLink } from "gatsby";
 import gsap from "gsap";
 import { DispatchContext, StateContext } from "./../context";
@@ -43,21 +43,19 @@ const CategorySection = ({ categories }) => {
           maxWidth: 1440,
         }}
       >
-        <Text as="p" variant="styles.p">
-          This whole section needs work... What do i put here?
-        </Text>
         <Link
           as={GatsbyLink}
           to="/all-products"
           activeClassName="active"
           variant="linkEffect"
           sx={{
-            fontSize: [5, 6],
+            fontSize: [3, 4],
           }}
         >
           All Products
         </Link>
-        <Text as="h1" variant="styles.h1" sx={{ my: 3 }}>
+        <Divider />
+        <Text sx={{ fontSize: [3, 4] }} sx={{ my: 3 }}>
           Categories
         </Text>
         {categories.map((category, index) => {

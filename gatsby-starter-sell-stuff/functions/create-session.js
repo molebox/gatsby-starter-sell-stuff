@@ -35,10 +35,10 @@ exports.handler = async (event) => {
             },
             mode: 'payment',
 
-            // success_url: `https://gatsby-starter-sell-stuff.netlify.app/success`,
-            // cancel_url: `https://gatsby-starter-sell-stuff.netlify.app/cancelled`,
-            success_url: `http://localhost:8888/success`,
-            cancel_url: `http://localhost:8888/cancelled`,
+            success_url: `https://gatsby-starter-sell-stuff.netlify.app/success`,
+            cancel_url: `https://gatsby-starter-sell-stuff.netlify.app/cancelled`,
+            // success_url: `http://localhost:8888/success`,
+            // cancel_url: `http://localhost:8888/cancelled`,
             line_items
         });
 

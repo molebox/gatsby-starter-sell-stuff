@@ -14,4 +14,8 @@ The content is managed via a [Sanity](https://www.sanity.io/) studio, it's repo 
 
 The site is hosted on [Netlify](https://www.netlify.com/) **(....add one click deploy button)** and uses a serverless function (which is also hosted on Netlify) to validate the customers cart and handle the Stripe checkout session.
 
+## Setup
+
+Before you begin developing with this starter you will need to create an account with Stripe. Once done grab your API and SECRET keys and add them to two new files `.env.development` and `.env.production`. You can copy paste the contents of the `.env.example` file as a template.
+
 More docs to follow.....

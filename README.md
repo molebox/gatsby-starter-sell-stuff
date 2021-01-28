@@ -1,5 +1,7 @@
 # gatsby-starter-sell-stuff
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1dc17f99-372f-488c-afbe-c880a8351983/deploy-status)](https://app.netlify.com/sites/gatsby-starter-sell-stuff/deploys)
+
 An ecommerce Gatsby starter built with Stripe, Sanity, Theme-ui and Netlify. 
 
 Live demo: [gatsby-starter-sell-stuff.netlify.app](https://gatsby-starter-sell-stuff.netlify.app/)

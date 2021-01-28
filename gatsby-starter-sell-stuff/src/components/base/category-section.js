@@ -4,6 +4,7 @@ import { Link as GatsbyLink } from "gatsby";
 import gsap from "gsap";
 import { DispatchContext, StateContext } from "./../context";
 import { globalHistory } from "@reach/router";
+import Dropdown from "./dropdown";
 
 const CategorySection = ({ categories }) => {
   const state = useContext(StateContext);
@@ -30,9 +31,20 @@ const CategorySection = ({ categories }) => {
   return (
     <Flex
       as="section"
-      variant="categorySection"
       sx={{
         top: state.navOpen ? 0 : -1000,
+        transition: "top 650ms ease-in-out",
+        position: "fixed",
+        bottom: 0,
+        width: "100vw",
+        height: "100%",
+        padding: 1,
+        flexGrow: 1,
+        flexBasis: "sidebar",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "background",
+        zIndex: 100,
       }}
     >
       <Flex
@@ -55,41 +67,8 @@ const CategorySection = ({ categories }) => {
           All Products
         </Link>
         <Divider />
-        <Text sx={{ fontSize: [3, 4] }} sx={{ my: 3 }}>
-          Categories
-        </Text>
-        {categories.map((category, index) => {
-          const numberOfProducts = category.products.length
-            ? category.products.length
-            : 0;
-          return (
-            <Flex
-              key={index}
-              sx={{ alignItems: "start", width: "max-content" }}
-            >
-              <Link
-                as={GatsbyLink}
-                to={`/category/${category.slug.current}`}
-                activeClassName="active"
-                variant="linkEffect"
-                sx={{
-                  fontSize: [3, 4],
-                }}
-              >
-                {category.title}
-              </Link>
-              <Text
-                as="p"
-                variant="styles.h2"
-                sx={{
-                  m: 3,
-                }}
-              >
-                - {numberOfProducts}
-              </Text>
-            </Flex>
-          );
-        })}
+
+          <Dropdown categories={categories} title="Categories"/>
       </Flex>
     </Flex>
   );

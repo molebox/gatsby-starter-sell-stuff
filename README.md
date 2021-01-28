@@ -2,6 +2,8 @@
 
 An ecommerce Gatsby starter built with Stripe, Sanity, Theme-ui and Netlify. 
 
+Live demo: [gatsby-starter-sell-stuff.netlify.app](https://gatsby-starter-sell-stuff.netlify.app/)
+
 This starter utilizes [use-shopping-cart](https://useshoppingcart.com/) under the hood to handle all interactions with Stripe and payment processes. 
 
 The content is managed via a [Sanity](https://www.sanity.io/) studio, it's repo is housed alongside this one. 
